@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<!--
+    CASA C-101_Aviojet for FlightGear flight simulator
+    Copyright (C) 2013  Pavel Cueto, Fernando Espinosa
+	With contributions of Flightgear community
+
+This program is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation; either version 3 of the License, or 
+(at your option) any later version. 
+
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+GNU General Public License for more details. 
+
+You should have received a copy of the GNU General Public License 
+along with this program; if not, write to the Free Software 
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+
+<!--
+This sytstem tries to simulate the CASA C-101 fuel system.
+
+TANK[0] - FUSELAGE
+TANK[1] - CENTER WING
+TANK[2] - LEFT WING
+TANK[3] - RIGHT WING
+
+Tanks 2 & 3 feed tank 1
+Tank 1 feeds tank tank 0
+Tank 0 feeds engine.
+-->
+
+<system name="Fuel">
+   <channel name="Fuel pumping">
+
+      <switch>
+         <default value="-5"/>
+         <test logic="OR" value="0">
+            propulsion/tank[2]/contents-lbs LE 0
+            propulsion/tank[1]/contents-lbs GT 987
+         </test>
+         <output>propulsion/tank[2]/external-flow-rate-pps</output>
+      </switch>
+
+      <switch>
+         <default value="-5"/>
+         <test logic="OR" value="0">
+            propulsion/tank[3]/contents-lbs LE 0
+            propulsion/tank[1]/contents-lbs GT 987
+         </test>
+         <output>propulsion/tank[3]/external-flow-rate-pps</output>
+      </switch>
+
+      <switch>
+         <default value="5"/>
+         <test logic="OR" value="0">
+            propulsion/tank[1]/contents-lbs LE 0
+            propulsion/tank[0]/contents-lbs GT 1983
+         </test>
+         <output>propulsion/tank[0]/external-flow-rate-pps</output>
+      </switch>
+
+      <summer>
+         <input>-propulsion/tank[2]/external-flow-rate-pps</input>
+         <input>-propulsion/tank[3]/external-flow-rate-pps</input>
+         <input>-propulsion/tank[0]/external-flow-rate-pps</input>
+         <output>propulsion/tank[1]/external-flow-rate-pps</output>
+      </summer>
+
+   </channel>
+</system>

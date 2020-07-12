@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+		<key n="100">
+		<name>d</name>
+		<desc>Open/Close door 1</desc>
+			<binding>
+				<command>nasal</command>
+				<script>
+				if(getprop("controls/door[0]") > 0) {
+					interpolate("controls/door[0]", 0, 2);
+				} else {
+					interpolate("controls/door[0]", 1, 2);
+				}
+				</script>
+			</binding>
+		</key>
+     
+		<key n="68">
+		<name>D</name>
+		<desc>Open/Close door 2</desc>
+			<binding>
+				<command>nasal</command>
+				<script>
+				if(getprop("controls/door[1]") > 0) {
+					interpolate("controls/door[1]", 0, 2);
+				} else {
+					interpolate("controls/door[1]", 1, 2);
+				}
+				</script>
+			</binding>
+		</key> 
+
+		<key n="108">
+			<name>l</name>
+			<desc>Open/Close landing-lights</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+					if(getprop("controls/door[2]") > 0) {
+						interpolate("controls/door[2]", 0, 3);
+					} else {
+						interpolate("controls/door[2]", 1, 3);
+					}
+					</script>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+					if(getprop("controls/lighting/landing-lights") > 0) {
+						interpolate("controls/lighting/landing-lights", 0, 3);
+					} else {
+						interpolate("controls/lighting/landing-lights", 1, 3);
+					}
+					</script>
+				</binding>
+		</key>
+
+
+
+
+</PropertyList>

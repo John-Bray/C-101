@@ -1,0 +1,1 @@
+setprop("/sim/current-view/y-offset-m", 0.47);

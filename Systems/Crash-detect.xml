@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+
+<system name="crash-detect">
+
+	<!-- <property value="0">systems/crash-detect/crashed</property>-->
+
+<channel name="Over-G">
+
+	<fcs_function name="wing-load">
+		<function>
+			<product>
+             <property>accelerations/Nz</property>
+             <property>inertia/weight-lbs</property>
+			</product>
+		</function>
+		<output>systems/crash-detect/wing-load</output>
+	</fcs_function>
+
+	<!--
+		Detect wing loads that exceed limits.
+		Operational limits are +64,000 lbs and
+		-32,000lbs.  IE. +8 or -4 Gs at 8,000 lbs
+		gross weight  This allows for a 40% engineering
+		margin of safety before actual structural
+		failure.   At higher gross weights the wing
+		structure will fail at lower G loadings.
+	-->
+
+	<!-- Cargas G especificas C-101
+			+7.5G	+35250 kg (77712.89 lbs)
+			-3.9	-18330 kg (40410.7 lbs)
+			A un peso bruto (gross weight) referencial de 4700 kgs (10579,98 lbs)
+	-->
+
+	<switch name="over-g-failure">
+		<test value="1">
+			systems/crash-detect/wing-load gt 85484.17
+		</test>
+		<test value="1">
+			systems/crash-detect/wing-load lt -46472.3
+		</test>
+		<output>systems/crash-detect/crashed</output>
+		<output>systems/crash-detect/over-g-failure </output>
+	</switch>
+
+	<switch name="over-g">
+		<test value="1">
+			systems/crash-detect/wing-load gt 77712.89
+		</test>
+		<test value="1">
+			systems/crash-detect/wing-load lt -40410.7
+		</test>
+		<output> systems/crash-detect/over-g </output>
+	</switch>
+
+</channel>
+
+<channel name="crashed">
+
+	<!-- end the sim if the aircraft is crashed -->
+
+	<switch name="systems/crash-detect/FG">
+		<test value="1">
+			systems/crash-detect/crashed == 1
+		</test>
+		<output>/sim/freeze/clock</output>
+		<output>/sim/freeze/main</output>
+		<output>/controls/engines/engine[0]/cutoff</output>
+		<output>/sim/crashed</output>
+	</switch>
+
+</channel>
+
+<channel name="impact-ground">
+
+	<switch name="impact">
+		<test logic="AND" value="1">
+			position/h-agl-ft lt 1.0
+			simulation/sim-time-sec gt 1.0
+		</test>
+		<output>systems/crash-detect/crashed</output>
+		<output> systems/crash-detect/impact </output>
+	</switch>
+
+</channel>
+
+</system>

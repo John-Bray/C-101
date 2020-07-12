@@ -1,0 +1,698 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <path>cockpit_INT_FG.ac</path>
+  
+  <animation><type>select</type>
+    <object-name>_C101_cockpit_INT</object-name>
+    <condition><equals>
+      <property>sim/current-view/internal</property><value>true</value>
+    </equals></condition>
+  </animation>
+  <animation><type>select</type>
+    <object-name>HSI_LOC</object-name>
+    <object-name>LOC-pointer</object-name>
+    <object-name>needle.localiser</object-name>
+     <condition><equals>
+      <property>/instrumentation/nav[0]/in-range</property><value>true</value>
+    </equals></condition>
+ </animation>
+ <animation><type>select</type>
+    <object-name>HSI_GS</object-name>
+    <object-name>needle.glideslope</object-name>
+    <object-name>GS-pointer</object-name>
+     <condition><equals>
+      <property>/instrumentation/nav[0]/gs-in-range</property><value>true</value>
+    </equals></condition>
+ </animation>
+
+<!-- ====================================================================== Indicators -->    
+  <animation><type>rotate</type><object-name>indicatorFlapsTOP</object-name>
+    <property>/surface-positions/flap-pos-norm</property>
+     <interpolation>
+      <entry><ind> 0.00 </ind><dep>  0 </dep></entry>
+      <entry><ind> 0.02 </ind><dep> 89 </dep></entry>
+      <entry><ind> 1.00 </ind><dep> 90 </dep></entry>
+    </interpolation>
+    <center><x-m>-4.006</x-m><!-- back --><z-m>0.196</z-m><!-- up --></center>
+    <axis><y> -1 </y><!--  pitch --></axis>
+  </animation>    
+  <animation><type>rotate</type><object-name>indicatorFlapsMIDDLE</object-name>
+    <property>/surface-positions/flap-pos-norm</property>
+     <interpolation>
+      <entry><ind> 0.00 </ind><dep>  0 </dep></entry>
+      <entry><ind> 0.38 </ind><dep> 1 </dep></entry>
+      <entry><ind> 0.40 </ind><dep> 90 </dep></entry>
+      <entry><ind> 0.42 </ind><dep> 1 </dep></entry>
+      <entry><ind> 1.00 </ind><dep> 0 </dep></entry>
+    </interpolation>
+    <center><x-m>-4.006</x-m><!-- back --><z-m>0.180</z-m><!-- up --></center>
+    <axis><y> -1 </y><!--  pitch --></axis>
+  </animation>
+    <animation><type>rotate</type><object-name>indicatorFlapsBOTTOM</object-name>
+    <property>/surface-positions/flap-pos-norm</property>
+     <interpolation>
+      <entry><ind> 0.00 </ind><dep>  0 </dep></entry>
+      <entry><ind> 0.98 </ind><dep> 0 </dep></entry>
+      <entry><ind> 1.00 </ind><dep> 90 </dep></entry>
+    </interpolation>
+    <center><x-m>-4.006</x-m><!-- back --><z-m>0.164</z-m><!-- up --></center>
+    <axis><y> -1 </y><!--  pitch --></axis>
+  </animation> 
+  
+   <animation><type>rotate</type><object-name>indicatorAirBrake_IN</object-name>
+    <property>/surface-positions/speedbrake-pos-norm</property>
+     <interpolation>
+      <entry><ind> 0.0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 0.1 </ind><dep> 89 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> 90 </dep></entry>
+    </interpolation>
+    <center><x-m>-4.006</x-m><!-- back --><z-m>0.196</z-m><!-- up --></center>
+    <axis><y> -1 </y><!--  pitch --></axis>
+  </animation>    
+  <animation><type>rotate</type><object-name>indicatorAirBrake_OUT</object-name>
+    <property>/surface-positions/speedbrake-pos-norm</property>
+     <interpolation>
+      <entry><ind> 0.0 </ind><dep>  0 </dep></entry>
+      <entry><ind> 0.8 </ind><dep> 0 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> 90 </dep></entry>
+    </interpolation>
+    <center><x-m>-4.006</x-m><!-- back --><z-m>0.180</z-m><!-- up --></center>
+    <axis><y> -1 </y><!--  pitch --></axis>
+  </animation> 
+  <!-- http://wiki.flightgear.org/Conditions -->
+  <animation><type>select</type><object-name>gear0_UP</object-name>
+    <condition><less-than>
+      <property>/gear/gear[0]/position-norm</property><value type="double">0.1</value>
+    </less-than></condition>
+  </animation> 
+  <animation><type>select</type><object-name>gear0_Transit</object-name>
+    <condition>
+      <and>
+        <greater-than>
+          <property>/gear/gear[0]/position-norm</property><value type="double">0.1</value>
+        </greater-than>
+        <less-than>
+          <property>/gear/gear[0]/position-norm</property><value type="double">0.9</value>
+        </less-than>
+      </and>
+    </condition> 
+  </animation>
+  <animation><type>select</type><object-name>gear0_DN</object-name>
+    <condition><greater-than>
+      <property>/gear/gear[0]/position-norm</property><value type="double">0.9</value>
+    </greater-than></condition>
+  </animation> 
+   <animation><type>select</type><object-name>gear1_UP</object-name>
+    <condition><less-than>
+      <property>/gear/gear[1]/position-norm</property><value type="double">0.1</value>
+    </less-than></condition>
+  </animation> 
+  <animation><type>select</type><object-name>gear1_Transit</object-name>
+    <condition>
+      <and>
+        <greater-than>
+          <property>/gear/gear[1]/position-norm</property><value type="double">0.1</value>
+        </greater-than>
+        <less-than>
+          <property>/gear/gear[1]/position-norm</property><value type="double">0.9</value>
+        </less-than>
+      </and>
+    </condition> 
+  </animation>
+  <animation><type>select</type><object-name>gear1_DN</object-name>
+    <condition><greater-than>
+      <property>/gear/gear[1]/position-norm</property><value type="double">0.9</value>
+    </greater-than></condition>
+  </animation> 
+  <animation><type>select</type><object-name>gear2_UP</object-name>
+    <condition><less-than>
+      <property>/gear/gear[2]/position-norm</property><value type="double">0.1</value>
+    </less-than></condition>
+  </animation> 
+  <animation><type>select</type><object-name>gear2_Transit</object-name>
+    <condition>
+      <and>
+        <greater-than>
+          <property>/gear/gear[2]/position-norm</property><value type="double">0.1</value>
+        </greater-than>
+        <less-than>
+          <property>/gear/gear[2]/position-norm</property><value type="double">0.9</value>
+        </less-than>
+      </and>
+    </condition> 
+  </animation>
+  <animation><type>select</type><object-name>gear2_DN</object-name>
+    <condition><greater-than>
+      <property>/gear/gear[2]/position-norm</property><value type="double">0.9</value>
+    </greater-than></condition>
+  </animation> 
+  
+  
+        
+ 
+<!-- ========================================================== Acceleration / G-Meter -->    
+  <animation><type>rotate</type><object-name>needleG-Force</object-name>
+    <property>/accelerations/pilot-gdamped</property>
+     <interpolation>
+      <entry><ind>-4 </ind><dep> -125 </dep></entry>
+      <entry><ind> 1 </ind><dep>  0 </dep></entry>
+      <entry><ind> 4 </ind><dep> 67 </dep></entry>
+      <entry><ind> 8 </ind><dep> 150 </dep></entry>
+      <entry><ind>11 </ind><dep> 225 </dep></entry>
+    </interpolation>
+    <center><y-m>-0.109</y-m><!-- right --><z-m>0.201</z-m><!-- up --></center>
+    <axis><x> -1 </x><!--  roll --></axis>
+  </animation>   
+<!-- ======================================================= ASI / Air Speed Indicator -->    
+  <animation><type>rotate</type>
+    <object-name>needle_AI_outer</object-name>
+    <object-name>needle_AI_inner</object-name>
+    <object-name>mmCover</object-name>
+    <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+     <interpolation>
+      <entry><ind> -999 </ind><dep> 179 </dep></entry>
+      <entry><ind>    0 </ind><dep> 180 </dep></entry>
+      <entry><ind>   50 </ind><dep> 192 </dep></entry>
+      <entry><ind>  100 </ind><dep> 247 </dep></entry>
+      <entry><ind>  150 </ind><dep> 300 </dep></entry>
+      <entry><ind>  200 </ind><dep> 345 </dep></entry>
+      <entry><ind>  300 </ind><dep> 410 </dep></entry>
+      <entry><ind>  400 </ind><dep> 457 </dep></entry>
+      <entry><ind>  600 </ind><dep> 533 </dep></entry>
+<!-- cal: setprop("/instrumentation/airspeed-indicator/indicated-speed-kt", 500);  -->
+    </interpolation>
+    <center><y-m>-0.076</y-m><!-- right --><z-m>0.134</z-m><!-- up --></center>
+    <axis><x> -1 </x><!--  roll --></axis>
+  </animation>
+  <animation><type>rotate</type><object-name>dial_MachMeter</object-name>
+    <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+     <interpolation>
+      <entry><ind> -999 </ind><dep> -79 </dep></entry>
+      <entry><ind>    0 </ind><dep> -80 </dep></entry>
+      <entry><ind>   67 </ind><dep> -60 </dep></entry>
+      <entry><ind>  134 </ind><dep> -10 </dep></entry>
+      <entry><ind>  200 </ind><dep> 30 </dep></entry>
+      <entry><ind>  268 </ind><dep> 54 </dep></entry>
+      <entry><ind>  334 </ind><dep> 68 </dep></entry>
+      <entry><ind>  400 </ind><dep> 78 </dep></entry>
+      <entry><ind>  467 </ind><dep> 82 </dep></entry>
+      <entry><ind>  534 </ind><dep> 86 </dep></entry>
+      <entry><ind>  600 </ind><dep> 90 </dep></entry>
+    </interpolation>
+    <center><y-m>-0.076</y-m><!-- right --><z-m>0.134</z-m><!-- up --></center>
+    <axis><x> -1 </x><!--  roll --></axis>
+  </animation> 
+ <animation><type>rotate</type><object-name>dial_MachMeter</object-name>
+    <property>instrumentation/altimeter/indicated-altitude-ft</property>
+     <interpolation>
+      <entry><ind> -999 </ind><dep> -1 </dep></entry>
+      <entry><ind>    0 </ind><dep>  0 </dep></entry>
+      <entry><ind>15000 </ind><dep> -36.5 </dep></entry>
+      <entry><ind>30000 </ind><dep> -73.0 </dep></entry>
+    </interpolation>
+    <center><y-m>-0.076</y-m><!-- right --><z-m>0.134</z-m><!-- up --></center>
+    <axis><x> -1 </x><!--  roll --></axis>
+  </animation> 
+<!--                                                              end of animation ASI -->
+<!-- =============================== MAIN AI / Attitude Indicator / Artificial Horizon -->  
+  <animation><type>rotate</type><object-name>ball_AI_main</object-name>
+    <property>/orientation/roll-deg</property>
+    <factor>1</factor>
+    <center><y-m>0.012</y-m><!-- right --><z-m>0.126</z-m><!-- up --></center>
+    <axis> <x> 1 </x><!--  roll --></axis>
+  </animation>
+  <animation><type>rotate</type>                   <object-name>roll-pointer</object-name> 
+    <property>/orientation/roll-deg</property>
+    <factor>1</factor>
+    <center><y-m>0.012</y-m><!-- right --><z-m>0.126</z-m><!-- up --></center>
+    <axis><x> 1 </x><!--  roll --><y> 0 </y><z> 0 </z></axis>
+  </animation>
+  <animation><type>rotate</type><object-name>ball_AI_main</object-name>
+    <property>/orientation/pitch-deg</property>
+    <factor>1</factor>
+    <center><x-m> -4.037 </x-m><!-- back --><z-m>  0.126 </z-m><!-- up --></center>
+    <axis><y>1</y><!-- pitch --><z>0</z></axis>
+  </animation>
+  <animation><type>rotate</type>               <object-name>needle.localiser</object-name>
+    <property>/instrumentation/nav[0]/heading-needle-deflection</property>
+    <factor>10</factor>
+    <center>
+      <x-m>-4.037 </x-m><!-- back -->
+      <y-m> 0.012</y-m><!-- right -->
+      <z-m> 0.126 </z-m><!-- up -->
+    </center>
+    <axis> <z> 1 </z><!--  yaw --></axis>
+  </animation> 
+  <animation><type>rotate</type>              <object-name>needle.glideslope</object-name>
+    <property>/instrumentation/nav[0]/gs-needle-deflection</property>
+    <factor>5</factor>
+    <center><x-m> -4.037 </x-m><!-- back --><z-m>  0.126 </z-m><!-- up --></center>
+    <axis><y> -1 </y><!-- pitch --></axis>
+  </animation> 
+  <animation><type>translate</type><object-name>LOC-pointer</object-name>
+    <property>/instrumentation/nav[0]/heading-needle-deflection</property>
+    <axis><y>1</y></axis>
+    <interpolation>
+	  <entry><ind> 10</ind><dep> 0.02</dep></entry>
+	  <entry><ind> 0.0</ind><dep> 0.00</dep></entry>
+	  <entry><ind>-10</ind><dep>-0.02</dep></entry>
+    </interpolation>
+  </animation> 
+  <animation><type>translate</type><object-name>GS-pointer</object-name>
+    <property>/instrumentation/nav[0]/gs-needle-deflection</property>
+    <axis><z>1</z></axis>
+    <interpolation>
+	  <entry><ind> 2.5</ind><dep> 0.01</dep></entry>
+	  <entry><ind> 0.0</ind><dep> 0.00</dep></entry>
+	  <entry><ind>-2.5</ind><dep>-0.01</dep></entry>
+    </interpolation>
+  </animation>  
+<!--                                                                    end of MAIN AI -->
+  
+    
+<!-- ================================================== VSI / Vertical Speed Indicator -->  
+  <animation><type>rotate</type><object-name>needle_VSI</object-name>
+    <property>instrumentation/vertical-speed-indicator/indicated-speed-fpm</property>
+    <interpolation>
+     <entry><ind>  -6000 </ind><dep>  -165 </dep></entry>
+     <entry><ind>  -4000 </ind><dep>  -142 </dep></entry>
+      <entry><ind> -3000 </ind><dep> -110 </dep></entry>
+      <entry><ind> -2000 </ind><dep>  -82 </dep></entry>
+      <entry><ind> -1000 </ind><dep>  -40 </dep></entry>
+      <entry><ind>     0 </ind><dep>    0 </dep></entry>
+      <entry><ind>  1000 </ind><dep>   40 </dep></entry>
+      <entry><ind>  2000 </ind><dep>   82 </dep></entry>
+      <entry><ind>  3000 </ind><dep>  110 </dep></entry>
+      <entry><ind>  2000 </ind><dep>  142 </dep></entry>
+      <entry><ind>  6000 </ind><dep>  165 </dep></entry>
+    </interpolation>
+    <center><y-m>0.098</y-m><!-- right --><z-m>0.068</z-m><!-- up --></center>
+    <axis><x> -1 </x><y>  0 </y><z>  0 </z></axis>
+  </animation><!--                                                end of animation VSI -->
+<!-- ===================================================== Altimeter Needles and drums -->
+ <animation><type>rotate</type><object-name>needle_Alt1</object-name>
+  <property>instrumentation/altimeter/indicated-altitude-ft</property>
+  <factor>0.36</factor>
+  <center><y-m>0.098</y-m><!-- right --><z-m>0.134</z-m><!-- up --></center> 
+  <axis><x>-1</x></axis>
+ </animation>
+  <animation><type>rotate</type><object-name>needle_Alt2</object-name>
+  <property>instrumentation/altimeter/indicated-altitude-ft</property>
+  <factor>0.036</factor>
+  <center><y-m>0.098</y-m><!-- right --><z-m>0.134</z-m><!-- up --></center> 
+  <axis><x>-1</x></axis>
+ </animation>
+ <animation><type>rotate</type><object-name>drumHundreds</object-name>
+  <property>instrumentation/altimeter/indicated-altitude-ft</property>
+  <factor>0.36</factor>
+  <center><x-m>-4.022</x-m><!-- back --><z-m> 0.134</z-m><!-- up --></center> 
+  <axis><y>-1</y></axis>
+ </animation>
+<animation><type>rotate</type><object-name>drumK</object-name>
+  <property>instrumentation/altimeter/indicated-altitude-ft</property>
+  <factor>0.036</factor>
+  <center><x-m>-4.022</x-m><!-- back --><z-m> 0.134</z-m><!-- up --></center> 
+  <axis><y>-1</y></axis>
+ </animation>
+<animation><type>rotate</type><object-name>drum10K</object-name>
+  <property>instrumentation/altimeter/indicated-altitude-ft</property>
+  <factor>0.0036</factor>
+  <center><x-m>-4.022</x-m><!-- back --><z-m> 0.134</z-m><!-- up --></center> 
+  <axis><y>-1</y></axis>
+ </animation>
+ 
+<animation><type>rotate</type><object-name>hpaUnits</object-name>
+  <property>instrumentation/altimeter/setting-hpa</property>
+  <factor>36</factor>
+  <center><x-m>-4.019</x-m><!-- back --><z-m> 0.124</z-m><!-- up --></center> 
+  <axis><y>-1</y></axis>
+ </animation> 
+ <animation><type>rotate</type><object-name>hpaTens</object-name>
+  <property>instrumentation/altimeter/setting-hpa</property>
+  <factor>3.6</factor>
+  <center><x-m>-4.019</x-m><!-- back --><z-m> 0.124</z-m><!-- up --></center> 
+  <axis><y>-1</y></axis>
+ </animation> 
+ <animation><type>rotate</type><object-name>hpaHundreds</object-name>
+  <property>instrumentation/altimeter/setting-hpa</property>
+  <factor>0.36</factor>
+  <center><x-m>-4.019</x-m><!-- back --><z-m> 0.124</z-m><!-- up --></center> 
+  <axis><y>-1</y></axis>
+ </animation> 
+ <animation><type>rotate</type><object-name>hpaThousands</object-name>
+  <property>instrumentation/altimeter/setting-hpa</property>
+  <factor>0.036</factor>
+  <center><x-m>-4.019</x-m><!-- back --><z-m> 0.124</z-m><!-- up --></center> 
+  <axis><y>-1</y></axis>
+ </animation>
+  <!-- to do: baroUp baroDown knobBaroSetting -->
+ 
+<!--                                                END OF Altimeter Needles and drums -->
+<!-- ================================================================== RMI - ADF+NAV1 -->
+  <animation><type>rotate</type>
+    <object-name>diskRMI</object-name>
+    <object-name>needleNAV1</object-name>
+	<property>/orientation/heading-deg</property>
+	<factor>1</factor>
+    <center><y-m>-0.074</y-m><!-- right --><z-m>0.057</z-m><!-- up --></center>	
+	<axis><x>1</x></axis>
+</animation>
+<!-- Murcia/San Xavier 	NDB O	370 Khz
+     Murcia/San Xavier 	NDB LCZ 381 KH 
+     /instrumentation/adf/frequencies/selected-khz
+     /instrumentation/adf/frequencies/standby-khz
+     -->
+<animation><type>rotate</type><object-name>needleADF1</object-name>	
+	<property>/instrumentation/adf/indicated-bearing-deg</property>
+	<factor>1</factor>
+    <center><y-m>-0.074</y-m><!-- right --><z-m>0.057</z-m><!-- up --></center>
+    <axis><x>-1</x></axis>
+  </animation>
+ <!-- nav[0] in FG is NAV1 IRL, eg: LELC 05R ILS ISJ 110.5 MHz 045 deg -->
+  <animation><type>rotate</type><object-name>needleNAV1</object-name>	
+	<property>/instrumentation/nav[0]/heading-deg</property>
+	<factor>1</factor>
+    <center><y-m>-0.074</y-m><!-- right --><z-m>0.057</z-m><!-- up --></center>	
+	<axis><x>-1</x></axis>
+  </animation>
+
+<!--  ================================================================== HSI - NAV1 -->
+
+ <animation><type>translate</type>                   <object-name>HSI_GS</object-name>
+  <property>/instrumentation/nav[0]/gs-needle-deflection</property>
+  <axis><z>1</z></axis>
+  <interpolation>
+	<entry><ind> 2.5</ind><dep> 0.01</dep></entry>
+	<entry><ind> 0.0</ind><dep> 0.00</dep></entry>
+	<entry><ind>-2.5</ind><dep>-0.01</dep></entry>
+  </interpolation>
+ </animation> 
+
+  <animation><type>translate</type>                  <object-name>HSI_LOC</object-name>
+    <property>/instrumentation/nav[0]/heading-needle-deflection</property>
+    <axis><y>1</y></axis>
+    <interpolation>
+	  <entry><ind>10</ind><dep> 0.01</dep></entry>
+	  <entry><ind>0.0</ind><dep>0</dep></entry>
+	  <entry><ind>-10</ind><dep>-0.01</dep></entry>
+    </interpolation>
+  </animation>
+
+  <animation><type>rotate</type>
+    <object-name>diskHSI</object-name>
+    <object-name>OBS_to</object-name>
+    <object-name>OBS_from</object-name>    
+    <object-name>HSI_LOC</object-name>
+    <property>/orientation/heading-deg</property>
+	<factor>1</factor>
+    <center><y-m>0.012</y-m><!-- right --><z-m>0.025</z-m><!-- up --></center>	
+	<axis><x>1</x></axis>
+  </animation>
+	
+  <animation><type>rotate</type>
+    <object-name>OBS_to</object-name>
+    <object-name>OBS_from</object-name>
+    <object-name>HSI_LOC</object-name>
+    <!--property>/instrumentation/nav[0]/heading-deg</property-->
+    <property>/instrumentation/nav[0]/radials/selected-deg</property>
+	<factor>1</factor>
+    <center><y-m>0.012</y-m><!-- right --><z-m>0.025</z-m><!-- up --></center>	
+	<axis><x>-1</x></axis>	
+  </animation>
+  <!--   	/instrumentation/nav[0]/nav-id     (string, eg ISJ)  -->
+  <!--                                                        COURSE DIGITS HSI-NAV1 -->
+  <!-- http://wiki.flightgear.org/Howto:Animate_models#Textranslate -->
+  <animation>
+    <type>textranslate</type>
+    <object-name>courseHundreds</object-name>
+    <!--property>/instrumentation/nav[0]/heading-deg</property-->
+    <property>/instrumentation/nav[0]/radials/selected-deg</property>
+    <step>100</step><factor>0.001</factor><bias>0.0001</bias>
+    <axis><y>-1</y></axis>
+  </animation>
+   <animation>
+    <type>textranslate</type>
+    <object-name>courseTens</object-name>
+    <!--property>/instrumentation/nav[0]/heading-deg</property-->
+    <property>/instrumentation/nav[0]/radials/selected-deg</property>
+    <step>10</step><factor>0.01</factor><bias>0.0001</bias>
+    <axis><y>-1</y></axis>
+  </animation>
+  <animation>
+    <type>textranslate</type>
+    <object-name>courseUnits</object-name>
+    <!--property>/instrumentation/nav[0]/heading-deg</property-->
+    <property>/instrumentation/nav[0]/radials/selected-deg</property>
+    <step>1</step><factor>0.1</factor><bias>0.0001</bias>
+    <axis><y>-1</y></axis>
+  </animation>
+  <!--                                                      DISTANCE DIGITS HSI-NAV1 -->
+   <!-- /instrumentation/nav[1]/nav-distance = meters 
+   http://wiki.flightgear.org/Expressions will NOT work here -->
+  <animation>
+    <type>textranslate</type>
+    <object-name>dmeHundreds</object-name>
+    <property>/instrumentation/nav[0]/nav-distance</property>
+    <step>185200</step><factor>0.00000054</factor><bias>0.0001</bias>
+    <axis><y>-1</y></axis>
+  </animation>
+  <animation>
+    <type>textranslate</type>
+    <object-name>dmeTens</object-name>
+    <property>/instrumentation/nav[0]/nav-distance</property>
+    <step>18520</step><factor>0.0000054</factor><bias>0.0001</bias>
+    <axis><y>-1</y></axis>
+  </animation> 
+  <animation>
+    <type>textranslate</type>
+    <object-name>dmeUnits</object-name>
+    <property>/instrumentation/nav[0]/nav-distance</property>
+    <step>1852</step><factor>0.000054</factor><bias>0.0001</bias>
+    <axis><y>-1</y></axis>
+  </animation> 
+   <animation>
+    <type>textranslate</type>
+    <object-name>dmeTenths</object-name>
+    <property>/instrumentation/nav[0]/nav-distance</property>
+    <step>185.2</step><factor>0.00054</factor><bias>0.0001</bias>
+    <axis><y>-1</y></axis>
+  </animation> 
+<!--                                                                   END OF HSI-NAV1 -->
+<!-- =============================================================== Turn Co-ordinator -->
+  <animation><type>rotate</type><object-name>turnNeedle</object-name>
+    <property>/orientation/yaw-rate-degps</property>
+    <factor>6</factor>
+    <center><y-m> 0.098 </y-m><!-- right -->
+    <z-m>  0.011 </z-m><!-- up --></center>
+    <axis><x>-1</x><!-- roll --></axis>
+  </animation>
+  <animation><type>translate</type>                  <object-name>slipBall</object-name>
+    <property>/orientation/side-slip-deg</property>
+    <axis><y>1</y></axis>
+    <interpolation>
+	  <entry><ind>5</ind><dep> 0.01</dep></entry>
+	  <entry><ind>0.0</ind><dep>0</dep></entry>
+	  <entry><ind>-5</ind><dep>-0.01</dep></entry>
+    </interpolation>
+  </animation>
+<!-- ====================================================================== Standby AI -->
+  <animation><type>rotate</type>
+    <object-name>AI_Stby_Drum</object-name>
+    <object-name>AI_Stby_RollPointer</object-name>
+    <property>/orientation/roll-deg</property>
+    <factor>1</factor>
+    <center><y-m>0.155</y-m><!-- right --><z-m>-0.011</z-m><!-- up --></center>
+    <axis> <x> 1 </x><!--  roll --></axis>
+  </animation>
+  <animation><type>rotate</type><object-name>AI_Stby_Drum</object-name>
+    <property>/orientation/pitch-deg</property>
+    <factor>1</factor>
+    <center><x-m> -4.017 </x-m><!-- back --><z-m>  -0.011 </z-m><!-- up --></center>
+    <axis><y>1</y><!-- pitch --><z>0</z></axis>
+  </animation>
+<!-- ========================================================================== ENGINE -->
+  <animation><type>rotate</type><object-name>needleVolts</object-name>
+    <property>/systems/electrical/volts</property>
+     <interpolation>
+      <entry><ind>  0 </ind><dep> 153 </dep></entry>
+      <entry><ind> 15 </ind><dep> 203 </dep></entry>
+      <entry><ind> 22 </ind><dep> 270 </dep></entry>
+      <entry><ind> 30 </ind><dep> 341 </dep></entry>
+      <entry><ind> 35 </ind><dep> 390 </dep></entry>
+    </interpolation>
+    <center><y-m>0.210</y-m><!-- right --><z-m>0.187</z-m><!-- up --></center>
+    <axis><x> -1 </x><!--  roll --></axis>
+  </animation> 
+  <animation><type>rotate</type><object-name>needleN1</object-name>
+    <property>/engines/engine/n1</property>
+     <interpolation>
+      <entry><ind>  0 </ind><dep> 62 </dep></entry>
+      <entry><ind> 115 </ind><dep> 295 </dep></entry>
+    </interpolation>
+    <center><y-m>0.160</y-m><!-- right --><z-m>0.143</z-m><!-- up --></center>
+    <axis><x> -1 </x><!--  roll --></axis>
+  </animation> 
+  <animation><type>rotate</type><object-name>needleFF</object-name>
+    <property>/engines/engine/fuel-flow_pph</property>
+     <interpolation>
+      <entry><ind>  0 </ind><dep> -120 </dep></entry>
+      <entry><ind> 2000 </ind><dep> 120 </dep></entry>
+    </interpolation>
+    <center><y-m>0.209</y-m><!-- right --><z-m>0.143</z-m><!-- up --></center>
+    <axis><x> -1 </x><!--  roll --></axis>
+  </animation> 
+  <animation><type>rotate</type><object-name>needleITT</object-name>
+    <property>/engines/engine/egt-degf</property>
+     <interpolation>
+      <entry><ind>  0 </ind><dep> 65 </dep></entry>
+      <entry><ind> 572 </ind><dep> 115 </dep></entry>
+      <entry><ind> 1022 </ind><dep> 180 </dep></entry>
+      <entry><ind> 1832 </ind><dep> 295 </dep></entry>
+    </interpolation>
+    <center><y-m>0.160</y-m><!-- right --><z-m>0.092</z-m><!-- up --></center>
+    <axis><x> -1 </x><!--  roll --></axis>
+  </animation>   
+  <animation><type>rotate</type><object-name>needleOilTemp</object-name>
+    <property>/engines/engine/fuel-flow_pph</property><!--  HACK!!!!!!  -->
+     <interpolation>
+      <entry><ind>  0 </ind><dep> -90 </dep></entry>
+      <entry><ind> 3000 </ind><dep> 120 </dep></entry>
+    </interpolation>
+    <center><y-m>0.209</y-m><!-- right --><z-m>0.092</z-m><!-- up --></center>
+    <axis><x> -1 </x><!--  roll --></axis>
+  </animation>
+  <animation><type>rotate</type><object-name>needleN2</object-name>
+    <property>/engines/engine/n2</property>
+     <interpolation>
+      <entry><ind>  0 </ind><dep> 62 </dep></entry>
+      <entry><ind> 115 </ind><dep> 295 </dep></entry>
+    </interpolation>
+    <center><y-m>0.160</y-m><!-- right --><z-m>0.042</z-m><!-- up --></center>
+    <axis><x> -1 </x><!--  roll --></axis>
+  </animation>   
+  <animation><type>rotate</type><object-name>needleOilPSI</object-name>
+    <property>/engines/engine/oil-pressure-psi</property><!--  HACK!!!!!!  -->
+     <interpolation>
+      <entry><ind>  0 </ind><dep> -120 </dep></entry>
+      <entry><ind> 80 </ind><dep> 120 </dep></entry>
+    </interpolation>
+    <center><y-m>0.209</y-m><!-- right --><z-m>0.042</z-m><!-- up --></center>
+    <axis><x> -1 </x><!--  roll --></axis>
+  </animation>
+
+
+
+
+<!-- ==================TESTING TEXT ============== http://wiki.flightgear.org/OSG_Text -->
+    <text>                                      
+<name>testingTextA</name>
+  <font>lcd.txf</font><character-size type="double">0.011</character-size>
+  <offsets>
+   <x-m>-4.007</x-m>
+   <y-m> 0.030</y-m>
+   <z-m> 0.185</z-m>
+   <pitch-deg>-45</pitch-deg>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment> 
+  <type type="string">number-value</type>
+  <property>/instrumentation/nav[0]/heading-needle-deflection</property>
+  <format type="string">%3.1f</format>
+  <truncate type="bool">false</truncate>
+  <alignment>right-top</alignment>
+ </text>
+  <text>                                      
+  <name>testingTextB</name>
+  <font>lcd.txf</font><character-size type="double">0.011</character-size>
+  <offsets>
+   <x-m>-4.007</x-m>
+   <y-m> 0.060</y-m>
+   <z-m> 0.200</z-m>
+   <pitch-deg>-45</pitch-deg>
+  </offsets>
+  <axis-alignment>yz-plane</axis-alignment> 
+  <type type="string">number-value</type>
+  <property>/instrumentation/nav[0]/gs-needle-deflection</property>
+  <format type="string">%3.1f</format>
+  <truncate type="bool">false</truncate>
+  <alignment>right-top</alignment>
+ </text>
+  
+
+<!-- ========================================================================== Clock  -->
+  <animation> <type>rotate</type><object-name>HourHand</object-name>
+    <property>instrumentation/clock/indicated-sec</property><factor>0.0083333</factor>
+    <center><y-m>0.097</y-m><!-- right --><z-m>-0.046</z-m><!-- up --></center> 
+    <axis><x>-1</x><y>0</y><z>0</z></axis>
+  </animation>
+  <animation> <type>rotate</type><object-name>MinuteHand</object-name>
+    <property>instrumentation/clock/indicated-sec</property>      <factor>0.1</factor>
+    <center><y-m>0.097</y-m><!-- right --><z-m>-0.046</z-m><!-- up --></center> 
+    <axis><x>-1</x><y>0</y><z>0</z></axis>
+	</animation>
+  <animation> <type>rotate</type><object-name>SecondHand</object-name>
+    <property>instrumentation/clock/indicated-sec</property>        <factor>6</factor>
+    <center><y-m>0.097</y-m><!-- right --><z-m>-0.046</z-m><!-- up --></center> 
+    <axis><x>-1</x><y>0</y><z>0</z></axis>
+  </animation><!--                                             end of animation Clock  -->
+
+
+<!-- handleCanopyOpen  -3.821  0.039  0.288-->
+  <animation> <type>rotate</type><object-name>handleCanopyOpen</object-name>
+  <property>controls/door[0]</property>    
+    <factor>88</factor>
+    <center>
+      <x-m>-3.821</x-m>
+      <z-m> 0.039</z-m>
+    </center> 
+    <axis><y>1</y></axis>
+  </animation> 
+  
+  <animation><type>rotate</type>
+    <object-name>cockpitFrontFrameInt</object-name>
+    <property>controls/door[0]</property>    
+    <factor>88.0</factor>
+     <axis>
+       <x1-m>-2.65129 </x1-m>
+       <y1-m> 0.349277</y1-m>
+       <z1-m> 0.345802</z1-m>
+       <x2-m>-3.553   </x2-m>
+       <y2-m> 0.349277</y2-m>
+       <z2-m> 0.173976</z2-m>
+    </axis>
+  </animation>
+<!-- cockpitRearFrameInt -->
+
+  <animation> <type>rotate</type><object-name>parkingBrake</object-name>
+    <property>/controls/gear/brake-parking</property>    <factor>90</factor>
+    <center><y-m>-0.323</y-m><z-m>-0.064</z-m></center> 
+    <axis><x>1</x></axis>
+  </animation> 
+  <animation><type>translate</type><object-name>parkingBrake</object-name>
+  <property>/controls/gear/brake-parking</property>    
+    <axis><x>1</x></axis>
+    <interpolation>
+	  <entry><ind> 0</ind><dep>0.0</dep></entry>
+	  <entry><ind> 1</ind><dep>0.04</dep></entry>
+    </interpolation>
+  </animation>   
+  <animation> <type>rotate</type><object-name>gearLever</object-name>
+    <property>/controls/gear/gear-down</property>    <factor>45</factor>
+    <center><x-m>-4.024</x-m><z-m>-0.040</z-m></center> 
+    <axis><y>1</y></axis>
+  </animation> 
+  
+   <animation> <type>rotate</type><object-name>stick</object-name>
+     <property>/controls/flight/aileron</property><factor>20</factor>
+    <center><x-m>-3.843</x-m><y-m>-0.008</y-m><z-m>-0.367</z-m></center> 
+    <axis><x>-1</x></axis>
+  </animation>       
+    <animation> <type>rotate</type><object-name>stick</object-name>
+     <property>/controls/flight/elevator</property><factor>20</factor>
+    <center><x-m>-3.843</x-m><y-m>-0.008</y-m><z-m>-0.367</z-m></center> 
+    <axis><y>-1</y></axis>
+  </animation> 
+  
+  
+
+</PropertyList>

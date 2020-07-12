@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+
+<!--
+    CASA C-101_Aviojet for FlightGear flight simulator
+    Copyright (C) 2013  Pavel Cueto, Fernando Espinosa
+
+This program is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation; either version 3 of the License, or 
+(at your option) any later version. 
+
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+GNU General Public License for more details. 
+
+You should have received a copy of the GNU General Public License 
+along with this program; if not, write to the Free Software 
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+
+<PropertyList>
+	
+	  <path>Beacon.ac</path>
+	  
+	  <animation>
+    <type>noshadow</type>
+    <object-name>Beacon</object-name>
+  </animation>
+
+	<animation>
+		<type>alpha-test</type>
+		<object-name>Beacon</object-name>
+		<alpha-factor>0.001</alpha-factor>
+	</animation>
+	
+		<animation>
+		<type>billboard</type>
+		<object-name>Beacon</object-name>
+		<spherical type="bool">true</spherical>
+	</animation>
+	
+	 <animation>
+		<type>select</type>
+		<object-name>Beacon</object-name>
+		<condition>
+			<property>/sim/model/C-101/lighting/beacon-top/state</property>
+		</condition>
+	</animation>	
+	
+	<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>25000</max-m>
+	</animation>
+
+	<Beaconparams>
+		<light-near>0.4</light-near>
+		<light-med>0.8</light-med>
+		<light-far>10</light-far>
+	</Beaconparams>
+
+
+	<animation>
+		<type>dist-scale</type>
+		<object-name>Beacon</object-name>
+		<interpolation>
+			<entry>
+				<ind>0</ind>
+				<dep alias="../../../../Beaconparams/light-near"/>
+			</entry>
+			<entry>
+				<ind>500</ind>
+				<dep alias="../../../../Beaconparams/light-med"/>
+			</entry>
+			<entry>
+				<ind>16000</ind>
+				<dep alias="../../../../Beaconparams/light-far"/>
+			</entry>
+		</interpolation>
+	</animation>
+
+	
+</PropertyList>

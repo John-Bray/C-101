@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<!--
+    CASA C-101_Aviojet for FlightGear flight simulator
+    Copyright (C) 2013  Pavel Cueto, Fernando Espinosa
+
+This program is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation; either version 3 of the License, or 
+(at your option) any later version. 
+
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+GNU General Public License for more details. 
+
+You should have received a copy of the GNU General Public License 
+along with this program; if not, write to the Free Software 
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+
+<PropertyList>
+
+<submodel>
+	<name>tracer</name>
+	<model>Aircraft/C-101/Models/Armament/DEFA553/tracer.xml</model>
+	<trigger>/controls/armament/trigger</trigger>
+	<speed>2840.0</speed>
+	<repeat>true</repeat>
+	<delay>0.15</delay>
+	<count>-1</count>
+	<x-offset>-3.9</x-offset>
+	<y-offset> 0   </y-offset>
+	<z-offset>-0.9</z-offset>
+	<yaw-offset>0</yaw-offset>
+	<pitch-offset>0</pitch-offset>
+	<life>2.0</life>
+	<wind>false</wind>
+	<weight>0.5</weight>
+	<cd>0.193</cd>
+	<eda>0.00136354</eda> 
+</submodel>
+
+<submodel>
+	<name>cannon</name>
+	<model>Models/Geometry/null.ac</model>
+	<trigger>/controls/armament/trigger</trigger>
+	<speed>2840.0</speed>
+	<repeat>true</repeat>
+	<delay>0.05</delay>
+	<count>-1</count>
+	<x-offset>-3.9</x-offset>
+	<y-offset> 0   </y-offset>
+	<z-offset>-0.9</z-offset>
+	<yaw-offset>0</yaw-offset>
+	<pitch-offset>0</pitch-offset>
+	<life>10.0</life>
+	<wind>false</wind>
+	<weight>0.77</weight>
+	<cd>0.193</cd>
+	<eda>0.00136354</eda> 
+	<collision>true</collision>
+	<collision-report>sim/ai/aircraft/collision/cannon</collision-report>
+	<impact>true</impact>
+	<impact-report>sim/ai/aircraft/impact/cannon</impact-report>
+	<submodel-path>Aircraft/C-101/Models/Armament/DEFA553/bullet-submodel.xml</submodel-path>
+</submodel>
+
+
+</PropertyList>

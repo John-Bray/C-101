@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    CASA C-101_Aviojet for FlightGear flight simulator
+    Copyright (C) 2013  Pavel Cueto, Fernando Espinosa
+
+This program is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation; either version 3 of the License, or 
+(at your option) any later version. 
+
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+GNU General Public License for more details. 
+
+You should have received a copy of the GNU General Public License 
+along with this program; if not, write to the Free Software 
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+
+<PropertyList>
+
+	<name>lights-dialog</name>
+	<layout>vbox</layout>
+
+	<group>
+		<layout>hbox</layout>
+
+		<empty>
+			<stretch>1</stretch>
+		</empty>
+
+		<text>
+			<label>Aircraft Lights</label>
+		</text>
+
+		<empty>
+			<stretch>1</stretch>
+		</empty>
+
+		<button>
+			<pref-width>16</pref-width>
+			<pref-height>16</pref-height>
+			<legend></legend>
+			<keynum>27</keynum>
+			<border>2</border>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+	
+	<hrule />
+
+	<text>
+		<label>External lights</label>
+	</text>
+
+	<group>
+		<layout>table</layout>
+		<checkbox>
+			<row>0</row>
+			<col>0</col>
+			<halign>left</halign>
+			<label>Navigation</label>
+			<live type="bool">true</live>
+			<property>controls/lighting/nav-lights</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+		</checkbox>
+		<checkbox>
+			<row>0</row>
+			<col>1</col>
+			<halign>left</halign>
+			<label>Beacon</label>
+			<live type="bool">true</live>
+			<property>controls/lighting/beacon</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+		</checkbox>
+		<checkbox>
+			<row>1</row>
+			<col>0</col>
+			<halign>left</halign>
+			<label>Landing</label>
+			<live type="bool">true</live>
+			<property>controls/lighting/landing-lights</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>
+				if(getprop("controls/door[2]") > 0) {
+					interpolate("controls/door[2]", 0, 3);
+				} else {
+					interpolate("controls/door[2]", 1, 3);
+				}
+				</script>
+			</binding>
+		</checkbox>
+		<checkbox>
+			<row>1</row>
+			<col>1</col>
+			<halign>left</halign>
+			<label>Formation</label>
+			<live type="bool">true</live>
+			<property>controls/lighting/formation_lighting</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+		</checkbox>
+	</group>
+
+	<hrule />
+
+	<text>
+		<label>(Internal lights are under development)</label>
+	</text>
+
+	<hrule />
+
+	<group>
+		<layout>vbox</layout>
+		<button>
+			<legend>Close</legend>
+			<default>true</default>
+			<key>Esc</key>
+			<padding>10</padding>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+
+</PropertyList>

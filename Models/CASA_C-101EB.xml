@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<!--
+    CASA C-101_Aviojet for FlightGear flight simulator
+    Copyright (C) 2013  Pavel Cueto, Fernando Espinosa
+    
+    Updated 2020 by Warty (John Bray)
+
+This program is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation; either version 3 of the License, or 
+(at your option) any later version. 
+
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+GNU General Public License for more details. 
+
+You should have received a copy of the GNU General Public License 
+along with this program; if not, write to the Free Software 
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+
+<PropertyList>
+  <!-- base airframe includes animated instruments/cockpit -->
+  <foo include="CASA_C-101_common.xml" omit-node="y" />
+
+  <!--model>
+	<path>Aircraft/C-101/Models/Instruments/C-101EB-instruments.xml</path>
+  </model-->
+
+  <model>
+	<path>Aircraft/C-101/Models/C-101_EB-BB_details.xml</path>
+  </model>
+  <model><!-- Humo acrobatico -->
+	<path>Aircraft/C-101/Models/Smoke_dispenser.xml</path>
+  </model>
+
+  <nasal><!-- Livery dialog -->
+	<load>
+		var livery_update = aircraft.livery_update.new("Aircraft/C-101/Models/Liveries_C-101EB");
+	</load>
+	<unload>
+		livery_update.stop();
+	</unload>
+  </nasal>
+
+  <effect><!-- SHADERS -->
+	<inherits-from>Aircraft/C-101/Models/Effects/reflect-bump-spec_shiny</inherits-from>
+		<object-name>Ala_DER</object-name>
+		<object-name>Ala_IZQ</object-name>
+		<object-name>Aleron_DER</object-name>
+		<object-name>Aleron_IZQ</object-name>
+		<object-name>CompTren_DEL_DER</object-name>
+		<object-name>CompTren_DEL_IZQ</object-name>
+		<object-name>CompTren_DER_01</object-name>
+		<object-name>CompTren_DER_02</object-name>
+		<object-name>CompTren_DER_03</object-name>
+		<object-name>CompTren_IZQ_01</object-name>
+		<object-name>CompTren_IZQ_02</object-name>
+		<object-name>CompTren_IZQ_03</object-name>
+		<object-name>Compuerta_01</object-name>
+		<object-name>Compuerta_02</object-name>
+		<object-name>Elevador_DER_01</object-name>
+		<object-name>Elevador_DER_02</object-name>
+		<object-name>Elevador_IZQ_01</object-name>
+		<object-name>Elevador_IZQ_02</object-name>
+		<object-name>Estab_Horizontal_1</object-name>
+		<object-name>Flap_DER</object-name>
+		<object-name>Flap_IZQ</object-name>
+		<object-name>Fuselaje_A</object-name>
+		<object-name>Fuselaje_B</object-name>
+		<object-name>Spoiler_01</object-name>
+		<object-name>Spoiler_02_DER</object-name>
+		<object-name>Spoiler_02_IZQ</object-name>
+		<object-name>Timon_01</object-name>
+		<object-name>Timon_02</object-name>
+  </effect>
+
+</PropertyList>

@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<!--
+    CASA C-101_Aviojet for FlightGear flight simulator
+    Copyright (C) 2013  Pavel Cueto, Fernando Espinosa
+
+This program is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation; either version 3 of the License, or 
+(at your option) any later version. 
+
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+GNU General Public License for more details. 
+
+You should have received a copy of the GNU General Public License 
+along with this program; if not, write to the Free Software 
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+
+<PropertyList include="C-101-base.xml">
+
+<sim>
+	<author>Pavel Cueto, Fernando Espinosa, Warty</author>
+	<description>CASA C-101EB Aviojet (Garrett TFE731-2 engine)</description>
+	<aircraft-version>22/05/2013</aircraft-version>
+	<flight-model>jsb</flight-model>
+	<aero>C-101EB-JSBSim</aero>
+	<model>
+		<path archive="y">Aircraft/C-101/Models/CASA_C-101EB.xml</path>
+	</model>
+	<startup>
+		<splash-texture>Aircraft/C-101/C-101EB-splash.png</splash-texture>
+	</startup>
+	<sound>
+		<path>Aircraft/C-101/Sounds/C-101EB-sounds.xml</path>
+	</sound>
+	<multiplay>
+		<generic>
+			<int n="11" alias="/controls/armament/smoke"/>
+		</generic>
+	</multiplay>
+	<menubar include="Dialogs/C-101EB-menu.xml"/>
+	<help include="Dialogs/C-101EB-help.xml"/>
+</sim>
+
+<nasal>
+	<C-101>
+		<file>Aircraft/C-101/Nasal/Liveries-C-101EB.nas</file>
+	</C-101>
+</nasal>
+
+<input>
+	<keyboard>
+		<key n="101">
+			<name>e</name>
+			<desc>Smoke trigger</desc> 
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/armament/smoke</property>
+			</binding>
+		</key>
+	</keyboard>
+</input>
+
+</PropertyList>

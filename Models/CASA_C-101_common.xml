@@ -1,0 +1,1336 @@
+<?xml version="1.0"?>
+
+<!--
+    CASA C-101_Aviojet for FlightGear flight simulator
+    Copyright (C) 2013  Pavel Cueto, Fernando Espinosa
+
+This program is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation; either version 3 of the License, or 
+(at your option) any later version. 
+
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+GNU General Public License for more details. 
+
+You should have received a copy of the GNU General Public License 
+along with this program; if not, write to the Free Software 
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+
+<PropertyList>
+
+  <path>CASA_C-101.ac</path>
+
+  <animation>
+    <type>select</type>
+    <object-name>Panel</object-name>
+    <object-name>Parasol</object-name>
+    <object-name>Interior</object-name>
+    <object-name>Interior_Suelo</object-name>
+    <object-name>Interior_Vigas</object-name>
+    <object-name>Interior_Separacion</object-name>
+    <object-name>Compuerta_01_interior</object-name>
+    <object-name>Compuerta_02_interior</object-name>
+    <condition><not><equals>
+      <property>sim/current-view/internal</property><value>true</value>
+    </equals></not></condition>
+  </animation>
+ 
+  <model><!-- animated cockpit for INTERNAL views -->
+	<name>cockpit_PILOT</name>
+	<path>Aircraft/C-101/Models/cockpit_PILOT.xml</path>
+  </model>
+
+
+  <!-- Pushback -->
+  <model>
+	<name>Pushback</name>
+	<path>Models\Airport\Pushback\Military.xml</path>
+	<offsets>
+		<x-m>-4.7</x-m>
+		<y-m> 0  </y-m>
+		<z-m>-1.7</z-m>
+	</offsets>
+  </model>
+
+  <!-- Pilot -->
+  <model>
+	<path>Aircraft/Generic/Pilot/Fighter/pilot.xml</path>
+	<offsets>
+		<x-m>-3.38</x-m>
+		<y-m> 0</y-m>
+		<z-m>-0.05</z-m>
+	</offsets>
+  </model>
+
+  <model>
+	<path>Aircraft/Generic/Pilot/Fighter/pilot.xml</path>
+	<offsets>
+		<x-m>-1.816</x-m>
+		<y-m> 0</y-m>
+		<z-m> 0.24975</z-m>
+	</offsets>
+  </model>
+
+  <!-- Asientos eyectables Martin Baker MK10 -->
+  <model>
+	<path>Aircraft/C-101/Models/MartinBaker_MK10.xml</path>
+	<offsets>
+		<x-m>-3.165</x-m>
+		<y-m> 0</y-m>
+		<z-m> 0.07425</z-m>
+		<heading-deg>-90</heading-deg>
+	</offsets>
+  </model>
+
+  <model>
+	<path>Aircraft/C-101/Models/MartinBaker_MK10.xml</path>
+	<offsets>
+		<x-m>-1.601</x-m>
+		<y-m> 0</y-m>
+		<z-m> 0.374</z-m>
+		<heading-deg>-90</heading-deg>
+	</offsets>
+  </model>
+
+  <!-- Particulas -->
+  <model>
+	<path>Aircraft/C-101/Models/Effects/Tailtip-trails.xml</path>
+	<offsets>
+		<x-m> 0.64</x-m>
+		<y-m> 5.13</y-m>
+		<z-m>-0.07</z-m>
+	</offsets>
+  </model>
+
+<model>
+	<path>Aircraft/C-101/Models/Effects/Tailtip-trails.xml</path>
+	<offsets>
+		<x-m> 0.64</x-m>
+		<y-m>-5.13</y-m>
+		<z-m>-0.07</z-m>
+	</offsets>
+</model>
+
+	<!-- Livery dialog -->
+
+<animation>
+	<type>material</type>
+		<object-name>Ala_DER</object-name>
+		<object-name>Ala_IZQ</object-name>
+		<object-name>Aleron_DER</object-name>
+		<object-name>Aleron_IZQ</object-name>
+		<object-name>CompTren_DEL_DER</object-name>
+		<object-name>CompTren_DEL_IZQ</object-name>
+		<object-name>CompTren_DER_01</object-name>
+		<object-name>CompTren_DER_02</object-name>
+		<object-name>CompTren_DER_03</object-name>
+		<object-name>CompTren_IZQ_01</object-name>
+		<object-name>CompTren_IZQ_02</object-name>
+		<object-name>CompTren_IZQ_03</object-name>
+		<object-name>Compuerta_01</object-name>
+		<object-name>Compuerta_02</object-name>
+		<object-name>Elevador_DER_01</object-name>
+		<object-name>Elevador_DER_02</object-name>
+		<object-name>Elevador_IZQ_01</object-name>
+		<object-name>Elevador_IZQ_02</object-name>
+		<object-name>Estab_Horizontal_1</object-name>
+		<object-name>Flap_DER</object-name>
+		<object-name>Flap_IZQ</object-name>
+		<object-name>Fuselaje_A</object-name>
+		<object-name>Fuselaje_B</object-name>
+		<object-name>LuzLanding_DER_01</object-name>
+		<object-name>LuzLanding_DER_02</object-name>
+		<object-name>LuzLanding_IZQ_01</object-name>
+		<object-name>LuzLanding_IZQ_02</object-name>
+		<object-name>Spoiler_01</object-name>
+		<object-name>Spoiler_02_DER</object-name>
+		<object-name>Spoiler_02_IZQ</object-name>
+		<object-name>Timon_01</object-name>
+		<object-name>Timon_02</object-name>
+			<property-base>sim/model/livery</property-base>
+			<texture-prop>texture</texture-prop>
+			<texture>Textures/Default.png</texture>
+</animation>
+
+
+
+	<!-- ANIMACIONES -->
+
+
+
+    <!-- Fuselaje -->
+
+	<!-- Animacion de la turbina --> 
+     <animation>
+        <type>select</type>
+        <object-name>Motor_01</object-name>
+        <condition>
+            <less-than>
+                <property>engines/engine/thrust_lb</property>
+                <value>1550</value>
+            </less-than>
+        </condition>
+    </animation> 
+
+    <animation>
+        <type>spin</type>
+        <object-name>Motor_01</object-name>
+        <property>engines/engine/thrust_lb</property>
+        <factor>1.0</factor>
+        <center>
+            <x-m> 2.65895 </x-m>
+            <y-m> 0.0     </y-m>
+            <z-m>-0.236833</z-m>
+        </center>
+        <axis>
+            <x>-1.0</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+	<!-- Animacion de los alerones --> 
+
+<animation>
+	<type>rotate</type>
+	<object-name>Aleron_IZQ</object-name>
+	<property>surface-positions/left-aileron-pos-norm</property>
+	<factor>25</factor>
+	<axis>
+		<x1-m> 0.243318</x1-m>
+		<y1-m>-4.85252 </y1-m>
+		<z1-m>-0.099864</z1-m>
+		<x2-m> 0.367169</x2-m>
+		<y2-m>-3.10218 </y2-m>
+		<z2-m>-0.252999</z2-m>
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>Aleron_DER</object-name>
+	<property>surface-positions/right-aileron-pos-norm</property>
+	<factor>25</factor>
+	<axis>
+		<x1-m> 0.243318</x1-m>
+		<y1-m> 4.85252 </y1-m>
+		<z1-m>-0.099864</z1-m>
+		<x2-m> 0.367169</x2-m>
+		<y2-m> 3.10218</y2-m>
+		<z2-m>-0.252999</z2-m>
+	</axis>
+</animation>
+
+	<!-- Animacion de los elevadores --> 
+
+	<!-- Elevador izquierdo -->
+
+<animation>
+	<type>rotate</type>
+	<object-name>Elevador_IZQ_01</object-name>
+	<object-name>Elevador_IZQ_02</object-name>
+	<property>surface-positions/elevator-pos-norm</property>
+	<interpolation>
+		<entry>
+			<ind>-1</ind>
+			<dep>-29</dep>
+		</entry>
+		<entry>
+			<ind>1</ind>
+			<dep>34</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m> 4.43569 </x1-m>
+		<y1-m>-1.8333  </y1-m>
+		<z1-m> 0.688357</z1-m>
+		<x2-m> 4.48306 </x2-m>
+		<y2-m>-0.169578</y2-m>
+		<z2-m> 0.688357</z2-m>
+	</axis>
+</animation>
+
+	<!-- Elevador derecho -->
+
+<animation>
+	<type>rotate</type>
+	<object-name>Elevador_DER_01</object-name>
+	<object-name>Elevador_DER_02</object-name>
+	<property>surface-positions/elevator-pos-norm</property>
+	<interpolation>
+		<entry>
+			<ind>1</ind>
+			<dep>-34</dep>
+		</entry>
+		<entry>
+			<ind>-1</ind>
+			<dep>29</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m> 4.43569 </x1-m>
+		<y1-m> 1.8333  </y1-m>
+		<z1-m> 0.688357</z1-m>
+		<x2-m> 4.48306 </x2-m>
+		<y2-m> 0.169578</y2-m>
+		<z2-m> 0.688357</z2-m>
+	</axis>
+</animation>
+
+	<!-- Trim elevador izquierdo -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>Elevador_IZQ_02</object-name>
+  <property>controls/flight/elevator-trim</property>
+  <interpolation>
+   <entry>
+    <ind>-1</ind>
+    <dep>-39</dep>
+   </entry>
+   <entry>
+    <ind>1</ind>
+    <dep>44</dep>
+   </entry>
+  </interpolation>
+    <axis>
+        <x1-m> 4.65721 </x1-m>
+        <y1-m>-1.33984 </y1-m>
+        <z1-m> 0.688357</z1-m>
+        <x2-m> 4.68776 </x2-m>
+        <y2-m>-0.992162</y2-m>
+        <z2-m> 0.688357</z2-m>
+    </axis>
+ </animation>
+ 
+ <!-- Trim elevador derecho -->
+ <animation>
+  <type>rotate</type>
+  <object-name>Elevador_DER_02</object-name>
+  <property>controls/flight/elevator-trim</property>
+  <interpolation>
+   <entry>
+    <ind>1</ind>
+    <dep>-44</dep>
+   </entry>
+   <entry>
+    <ind>-1</ind>
+    <dep>39</dep>
+   </entry>
+  </interpolation>
+    <axis>
+        <x1-m> 4.65721</x1-m>
+        <y1-m> 1.33984</y1-m>
+        <z1-m> 0.688357</z1-m>
+        <x2-m> 4.68776</x2-m>
+        <y2-m> 0.992163</y2-m>
+        <z2-m> 0.688357</z2-m>
+    </axis>
+ </animation> 
+ 
+ 
+ <!-- Animacion del timon de direccion --> 
+ <!-- Timon de direccion -->
+  <animation>
+  <type>rotate</type>
+  <object-name>Timon_01</object-name>
+  <object-name>Timon_02</object-name>
+  <property>surface-positions/rudder-pos-norm</property>
+  <factor>-25</factor>
+    <axis>
+        <x1-m> 5.36964 </x1-m>
+        <y1-m> 0.00    </y1-m>
+        <z1-m> 2.18223 </z1-m>
+        <x2-m> 4.79112 </x2-m>
+        <y2-m> 0.00    </y2-m>
+        <z2-m> 0.445485</z2-m>
+    </axis>
+ </animation>
+ 
+ <!-- Trim del timon de direccion -->
+  <animation>
+  <type>rotate</type>
+  <object-name>Timon_02</object-name>
+  <property>controls/flight/rudder-trim</property>
+  <factor>-25</factor>
+    <axis>
+        <x1-m> 5.63488 </x1-m>
+        <y1-m> 0.00    </y1-m>
+        <z1-m> 0.859253</z1-m>
+        <x2-m> 5.63488 </x2-m>
+        <y2-m> 0.00    </y2-m>
+        <z2-m> 0.429471</z2-m>
+    </axis>
+ </animation>
+ 
+ 
+ <!-- Animacion de los Flaps --> 
+ <animation>
+    <type>rotate</type>
+    <object-name>Flap_IZQ</object-name>
+    <property>surface-positions/flap-pos-norm</property>
+    <factor>35</factor>
+    <axis>
+        <x1-m> 0.45411</x1-m>
+        <y1-m>-2.99726</y1-m>
+        <z1-m>-0.262099</z1-m>
+        <x2-m> 0.612671</x2-m>
+        <y2-m>-1.00125</y2-m>
+        <z2-m>-0.436727</z2-m>
+    </axis>
+   </animation>
+   
+ <animation>
+    <type>rotate</type>
+    <object-name>Flap_DER</object-name>
+    <property>surface-positions/flap-pos-norm</property>
+    <factor>-35</factor>
+    <axis>
+        <x1-m> 0.454412</x1-m>
+        <y1-m> 2.99726</y1-m>
+        <z1-m>-0.262099</z1-m>
+        <x2-m> 0.612973</x2-m>
+        <y2-m> 1.00125</y2-m>
+        <z2-m>-0.436727</z2-m>
+    </axis>
+   </animation>
+ 
+ 
+ <!-- Animacion de las compuertas --> 
+ <!-- Compuerta piloto -->
+ <animation>
+  <type>rotate</type>
+  <object-name>Compuerta_01</object-name>
+  <object-name>Compuerta_01_Cristal</object-name>
+  <object-name>Compuerta_01_interior</object-name>
+  <property>controls/door[0]</property>    
+  <factor>88.0</factor>
+   <axis>
+       <x1-m>-2.65129 </x1-m>
+       <y1-m> 0.349277</y1-m>
+       <z1-m> 0.345802</z1-m>
+       <x2-m>-3.553   </x2-m>
+       <y2-m> 0.349277</y2-m>
+       <z2-m> 0.173976</z2-m>
+   </axis>
+</animation>
+
+ <!-- Compuerta copiloto -->
+ <animation>
+  <type>rotate</type>
+  <object-name>Compuerta_02</object-name>
+  <object-name>Compuerta_02_Cristal</object-name>
+  <object-name>Compuerta_02_interior</object-name>
+  <property>controls/door[1]</property>    
+  <factor>88.0</factor>
+   <axis>
+       <x1-m>-1.3236  </x1-m>
+       <y1-m> 0.349277</y1-m>
+       <z1-m> 0.598799</z1-m>
+       <x2-m>-2.34537 </x2-m>
+       <y2-m> 0.349277</y2-m>
+       <z2-m> 0.404097</z2-m>
+   </axis>
+</animation>
+
+	<!-- Animacion de los aerofrenos -->
+
+<animation>
+	<type>rotate</type>
+	<object-name>Spoiler_01</object-name>
+	<object-name>Spoiler_02_DER</object-name>
+	<object-name>Spoiler_02_IZQ</object-name>
+	<property>surface-positions/speedbrake-pos-norm</property>
+	<factor>55</factor>
+	<axis>
+		<x1-m>-0.9841  </x1-m>
+		<y1-m>-0.465625</y1-m>
+		<z1-m>-0.741052</z1-m>
+		<x2-m>-0.9841  </x2-m>
+		<y2-m> 0.465625</y2-m>
+		<z2-m>-0.741052</z2-m>
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>Spoiler_02_DER</object-name>
+	<object-name>Spoiler_02_IZQ</object-name>
+	<property>surface-positions/speedbrake-pos-norm</property>
+	<factor>-55</factor>
+	<axis>
+		<x1-m>-0.782182</x1-m>
+		<y1-m>-0.324761</y1-m>
+		<z1-m>-0.776603</z1-m>
+		<x2-m>-0.782182</x2-m>
+		<y2-m> 0.324761</y2-m>
+		<z2-m>-0.776603</z2-m>
+	</axis>
+</animation>
+
+<!-- Tren de aterrizaje -->
+
+	<!-- Direccion -->
+
+<animation>
+	<type>rotate</type>  
+	<object-name>Rueda_DEL_01</object-name> 
+	<object-name>Rueda_DEL_02</object-name>
+	<object-name>Tren_DEL_01</object-name>
+	<object-name>Tren_DEL_02</object-name>
+	<object-name>Tren_DEL_03</object-name>
+	<object-name>Tren_DEL_04</object-name>
+	<property>gear/gear/steering-norm</property>
+		<factor>45</factor>		
+		<axis>
+			<x1-m>-4.88279</x1-m>
+			<y1-m> 0.00   </y1-m>
+			<z1-m>-0.62453</z1-m>
+			<x2-m>-4.88279</x2-m>
+			<y2-m> 0.00   </y2-m>
+			<z2-m>-1.20749</z2-m>			
+		</axis>
+</animation> 
+  
+  
+<!-- Amortiguacion Delantera -->  
+ <animation>
+   <type>rotate</type>
+   <object-name>Tren_DEL_03</object-name>
+   <object-name>Rueda_DEL_01</object-name>
+   <object-name>Rueda_DEL_02</object-name>
+   <property>gear/gear[0]/compression-norm</property>
+   <interpolation>
+			<entry>
+				<ind>0</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>1</ind>
+				<dep>50</dep>
+			</entry>
+		</interpolation>
+   <center>
+   <x-m>-5.02653</x-m>
+   <y-m> 0.0    </y-m>
+   <z-m>-1.23799</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>-1.0</y>
+   <z>0.0</z>
+  </axis>
+</animation>
+  
+ <animation>
+   <type>translate</type> 
+   <object-name>Tren_DEL_04</object-name> 
+   <property>gear/gear[0]/compression-norm</property>
+    <factor>-0.10</factor>
+    <axis>
+			<x1-m>-4.88194</x1-m>
+			<y1-m> 0.00   </y1-m>
+			<z1-m>-1.07939</z1-m>
+			<x2-m>-4.89873</x2-m>
+			<y2-m> 0.00   </y2-m>
+			<z2-m>-1.27134</z2-m>			
+		</axis>
+  </animation> 
+  
+<!-- Amortiguacion Trasera Izquierda -->
+ <animation>
+   <type>rotate</type>
+   <object-name>Tren_IZQ_02</object-name>
+   <object-name>Rueda_IZQ_01</object-name>
+   <object-name>Rueda_IZQ_02</object-name>
+   <property>gear/gear[1]/compression-norm</property>
+   <interpolation>
+			<entry>
+				<ind>0</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>1</ind>
+				<dep>50</dep>
+			</entry>
+		</interpolation>
+   <center>
+   <x-m>-0.40545</x-m>
+   <y-m>-1.6451 </y-m>
+   <z-m>-1.32002</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>-1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation> 
+ 
+ <animation>
+   <type>translate</type> 
+   <object-name>Tren_IZQ_03</object-name> 
+   <property>gear/gear[1]/compression-norm</property>
+    <factor>-0.20</factor>
+    <axis>
+			<x1-m>-0.03355 </x1-m>
+			<y1-m>-1.563   </y1-m>
+			<z1-m>-0.753908</z1-m>
+			<x2-m>-0.243095</x2-m>
+			<y2-m>-1.563   </y2-m>
+			<z2-m>-1.4252  </z2-m>			
+		</axis>
+  </animation> 
+  
+<!-- Amortiguacion Trasera Derecha -->
+ <animation>
+   <type>rotate</type>
+   <object-name>Tren_DER_02</object-name>
+   <object-name>Rueda_DER_01</object-name>
+   <object-name>Rueda_DER_02</object-name>
+   <property>gear/gear[2]/compression-norm</property>
+   <interpolation>
+			<entry>
+				<ind>1</ind>
+				<dep>50</dep>
+			</entry>
+			<entry>
+				<ind>0</ind>
+				<dep>0</dep>
+			</entry>
+		</interpolation>
+   <center>
+   <x-m>-0.40545</x-m>
+   <y-m> 1.6451 </y-m>
+   <z-m>-1.32002</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>-1.0</y>
+   <z>0.0</z>
+  </axis>
+</animation> 
+
+ <animation>
+   <type>translate</type> 
+   <object-name>Tren_DER_03</object-name> 
+   <property>gear/gear[2]/compression-norm</property>
+    <factor>-0.20</factor>
+    <axis>
+			<x1-m>-0.03355 </x1-m>
+			<y1-m> 1.563   </y1-m>
+			<z1-m>-0.753908</z1-m>
+			<x2-m>-0.243095</x2-m>
+			<y2-m> 1.563   </y2-m>
+			<z2-m>-1.4252  </z2-m>			
+		</axis>
+  </animation>
+ 
+	<!-- Tren de aterrizaje retractil -->
+
+	<!-- Delantero -->  
+
+<animation>
+	<type>rotate</type>
+	<object-name>Rueda_DEL_01</object-name>
+	<object-name>Rueda_DEL_02</object-name>
+	<object-name>Tren_DEL_01</object-name>
+	<object-name>Tren_DEL_02</object-name>
+	<object-name>Tren_DEL_03</object-name>
+	<object-name>Tren_DEL_04</object-name>
+	<property>gear/gear[0]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>0</ind>
+			<dep>100</dep>       <!-- <dep>113</dep> -->
+		</entry>
+		<entry>
+			<ind>0.8</ind>    <!-- codigos intercalados -->
+			<dep>0</dep>
+		</entry>		
+		<entry>
+			<ind>1.0</ind>
+			<dep>0</dep>
+		</entry>
+	</interpolation>
+	<center>
+		<x-m>-4.88279</x-m>
+		<y-m> 0.00   </y-m>
+		<z-m>-0.62453</z-m>
+	</center>
+	<axis>
+		<x>0.0</x>
+		<y>1.0</y>
+		<z>0.0</z>
+	</axis>
+</animation>
+    
+<animation>
+	<type>rotate</type>
+	<object-name>CompTren_DEL_IZQ</object-name>
+	<property>gear/gear[0]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>1.0</ind>
+			<dep>70</dep>
+		</entry>
+		<entry>
+			<ind>0.1</ind>
+			<dep>70</dep>
+		</entry>
+		<entry>
+			<ind>0</ind>
+			<dep>0.0</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m>-5.50838 </x1-m>
+		<y1-m>-0.196647</y1-m>
+		<z1-m>-0.772447</z1-m>
+		<x2-m>-5.98973 </x2-m>
+		<y2-m>-0.192467</y2-m>
+		<z2-m>-0.737315</z2-m>
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>CompTren_DEL_DER</object-name>
+	<property>gear/gear[0]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>1.0</ind>
+			<dep>-70</dep>
+		</entry>
+		<entry>
+			<ind>0.1</ind>
+			<dep>-70</dep>
+		</entry>
+		<entry>
+			<ind>0</ind>
+			<dep>0.0</dep>
+		</entry>
+	</interpolation>
+	<axis>
+        <x1-m>-5.50838 </x1-m>
+        <y1-m> 0.196647</y1-m>
+        <z1-m>-0.772447</z1-m>
+        <x2-m>-5.98973 </x2-m>
+        <y2-m> 0.192467</y2-m>
+        <z2-m>-0.737315</z2-m>
+	</axis>
+</animation>
+
+	<!-- Trasero izquierdo -->
+
+<animation>
+	<type>rotate</type>
+	<object-name>Rueda_IZQ_01</object-name>
+	<object-name>Rueda_IZQ_02</object-name>
+	<object-name>Tren_IZQ_01</object-name>
+	<object-name>Tren_IZQ_02</object-name>
+	<object-name>Tren_IZQ_03</object-name>
+	<object-name>Tren_IZQ_04</object-name>
+	<property>gear/gear[1]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>0</ind>
+			<dep>-82.6</dep>
+		</entry>
+		<entry>
+			<ind>1.0</ind>
+			<dep>0.0</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m> 0.114003</x1-m>
+		<y1-m>-1.62063 </y1-m>
+		<z1-m>-0.449519</z1-m>
+		<x2-m>-0.159148</x2-m>
+		<y2-m>-1.62063 </y2-m>
+		<z2-m>-0.3501  </z2-m>
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>CompTren_IZQ_01</object-name>
+	<property>gear/gear[1]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>1.0</ind>
+			<dep>85</dep>
+		</entry>
+		<entry>
+			<ind>0.3</ind>      <!-- <ind>0.5</ind> -->
+			<dep>85</dep>
+		</entry>
+		<entry>
+			<ind>0</ind>
+			<dep>0.0</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m>-0.105295</x1-m>
+		<y1-m>-0.029754</y1-m>
+		<z1-m>-0.787312</z1-m>
+		<x2-m> 0.437983</x2-m>
+		<y2-m>-0.02886</y2-m>
+		<z2-m>-0.787312</z2-m>
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>CompTren_IZQ_02</object-name>
+	<property>gear/gear[1]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>1.0</ind>
+			<dep>89</dep>		
+		</entry>
+		<entry>
+			<ind>0</ind>
+			<dep>0.0</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m> 0.114003</x1-m>	
+		<y1-m>-1.59867</y1-m>		
+		<z1-m>-0.449519</z1-m>		
+		<x2-m>-0.159148</x2-m>
+		<y2-m>-1.50243</y2-m>	
+		<z2-m>-0.405206 </z2-m>	
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>CompTren_IZQ_03</object-name>
+	<property>gear/gear[1]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>1.0</ind>
+			<dep>95</dep>    <!-- <dep>110</dep> -->
+		</entry>
+		<entry>
+			<ind>0.9</ind>   <!-- <ind>0.5</ind> -->
+			<dep>95</dep>    <!-- <dep>110</dep> -->
+		</entry>
+		<entry>
+			<ind>0</ind>
+			<dep>0.0</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m> 0.045556</x1-m>
+		<y1-m>-1.69891</y1-m>
+		<z1-m>-0.495827</z1-m>
+		<x2-m>-0.139406</x2-m>
+		<y2-m>-1.69946</y2-m>
+		<z2-m>-0.502173</z2-m>
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>Tren_IZQ_05</object-name>
+	<object-name>Tren_IZQ_06</object-name>
+	<property>gear/gear[1]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>0</ind>
+			<dep>18.5</dep> 
+		</entry>
+		<entry>
+			<ind>0.5</ind>     
+			<dep>6.0</dep> 
+		</entry>
+		<entry>
+			<ind>1.0</ind>
+			<dep>0.0</dep>  
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m> 0.863938</x1-m> 
+		<y1-m>-0.573104</y1-m>   
+		<z1-m>-0.805634</z1-m> 
+		<x2-m>-0.775099</x2-m>  
+		<y2-m>-1.18646 </y2-m>   
+		<z2-m>-0.117353</z2-m>  
+	</axis>
+</animation>
+  
+<animation>
+	<type>translate</type>
+	<object-name>Tren_IZQ_06</object-name>
+<property>gear/gear[1]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>0</ind>
+			<dep>0.10</dep> 
+		</entry>
+		<entry>
+			<ind>0.5</ind>
+			<dep>0.085</dep>  
+		</entry>
+		<entry>
+			<ind>1.0</ind>
+			<dep>0.0</dep>  
+		</entry>
+	</interpolation> 
+	<axis>
+		<x1-m> 0.036718 </x1-m>
+		<y1-m>-1.24617  </y1-m>
+		<z1-m>-0.528999 </z1-m>
+		<x2-m> 0.0367175</x2-m>	
+		<y2-m>-0.863331 </y2-m>	
+		<z2-m>-0.461494 </z2-m>		
+	</axis>
+</animation>
+
+	<!-- Trasero derecho -->
+
+<animation>
+	<type>rotate</type>
+	<object-name>Rueda_DER_01</object-name>
+	<object-name>Rueda_DER_02</object-name>
+	<object-name>Tren_DER_01</object-name>
+	<object-name>Tren_DER_02</object-name>
+	<object-name>Tren_DER_03</object-name>
+	<object-name>Tren_DER_04</object-name>
+	<property>gear/gear[2]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>0</ind>
+			<dep>82.6</dep> 
+		</entry>
+		<entry>
+			<ind>1.0</ind>
+			<dep>0.0</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m> 0.114003</x1-m>
+		<y1-m> 1.62063 </y1-m>
+		<z1-m>-0.449519</z1-m>
+		<x2-m>-0.159148</x2-m>
+		<y2-m> 1.62063 </y2-m>
+		<z2-m>-0.3501  </z2-m>
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>CompTren_DER_01</object-name>
+	<property>gear/gear[2]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>1.0</ind>
+			<dep>-85</dep>
+		</entry>
+		<entry>
+			<ind>0.3</ind>    <!-- <ind>0.5</ind> -->
+			<dep>-85</dep>
+		</entry>
+		<entry>
+			<ind>0</ind>
+			<dep>0.0</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m>-0.105295</x1-m>
+		<y1-m> 0.029754</y1-m>
+		<z1-m>-0.787312</z1-m>
+		<x2-m> 0.437983</x2-m>
+		<y2-m> 0.02886 </y2-m>
+		<z2-m>-0.787312</z2-m>
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>CompTren_DER_02</object-name>
+	<property>gear/gear[2]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>1.0</ind>
+			<dep>-89</dep> 
+		</entry>
+		<entry>
+			<ind>0</ind>
+			<dep>0.0</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m> 0.114003</x1-m>		
+		<y1-m> 1.59867 </y1-m>		
+		<z1-m>-0.449519</z1-m>		
+		<x2-m>-0.159148</x2-m>		
+		<y2-m> 1.50243 </y2-m>		
+		<z2-m>-0.405206</z2-m>		
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>CompTren_DER_03</object-name>
+	<property>gear/gear[2]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>1.0</ind>
+			<dep>-95</dep>     <!-- <dep>-110</dep> -->
+		</entry>
+		<entry>
+			<ind>0.9</ind>     <!-- <ind>0.5</ind> -->
+			<dep>-95</dep>     <!-- <dep>-110</dep> -->
+		</entry>
+		<entry>
+			<ind>0</ind>
+			<dep>0.0</dep>
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m> 0.045556</x1-m>
+		<y1-m> 1.69891</y1-m>
+		<z1-m>-0.495827</z1-m>
+		<x2-m>-0.139406</x2-m>
+		<y2-m> 1.69946</y2-m>
+		<z2-m>-0.502173</z2-m>
+	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>Tren_DER_05</object-name>
+	<object-name>Tren_DER_06</object-name>
+	<property>gear/gear[2]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>0</ind>
+			<dep>-18.5</dep> 
+		</entry>
+		<entry>
+			<ind>0.5</ind>
+			<dep>-6.0</dep> 
+		</entry>
+		<entry>
+			<ind>1.0</ind>
+			<dep>0.0</dep>  
+		</entry>
+	</interpolation>
+	<axis>
+		<x1-m> 0.863938</x1-m> 
+		<y1-m> 0.573104</y1-m>   
+		<z1-m>-0.805634</z1-m> 
+		<x2-m>-0.775099</x2-m>  
+		<y2-m> 1.18646 </y2-m>   
+		<z2-m>-0.117353</z2-m>  
+	</axis>
+</animation>
+  
+<animation>
+	<type>translate</type>
+	<object-name>Tren_DER_06</object-name>
+	<property>gear/gear[2]/position-norm</property>
+	<interpolation>
+		<entry>
+			<ind>0</ind>
+			<dep>0.10</dep> 
+		</entry>
+		<entry>
+			<ind>0.5</ind>
+			<dep>0.085</dep>  
+		</entry>
+		<entry>
+			<ind>1.0</ind>
+			<dep>0.0</dep>  
+		</entry>
+	</interpolation> 
+	<axis>
+		<x1-m> 0.036718 </x1-m>
+		<y1-m> 1.24617  </y1-m>
+		<z1-m>-0.528999 </z1-m>
+		<x2-m> 0.0367175</x2-m>	
+		<y2-m> 0.863331 </y2-m>	
+		<z2-m>-0.461494 </z2-m>		
+	</axis>
+</animation>
+
+  <!-- Rotacion de las ruedas -->   
+    <animation>   <!-- Delantera -->
+        <type>spin</type>
+        <object-name>Rueda_DEL_01</object-name>
+        <object-name>Rueda_DEL_02</object-name>
+     <property>gear/gear[0]/rollspeed-ms</property> 
+        <factor>-13.8</factor> 
+        <center>
+            <x-m>-4.8171 </x-m>
+            <y-m> 0.00   </y-m>
+            <z-m>-1.60008</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation> <!-- trasera izquierda -->
+        <type>spin</type>
+        <object-name>Rueda_IZQ_01</object-name>
+        <object-name>Rueda_IZQ_02</object-name>
+        <property>gear/gear[1]/rollspeed-ms</property>  
+        <factor>-13.8</factor>
+        <center>
+            <x-m>-0.109838</x-m>
+            <y-m>-1.389</y-m>
+            <z-m>-1.62206</z-m>
+        </center>        
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation>
+    
+    <animation>  <!-- trasera derecha -->
+        <type>spin</type>
+        <object-name>Rueda_DER_01</object-name>
+        <object-name>Rueda_DER_02</object-name>
+        <property>gear/gear[2]/rollspeed-ms</property>
+        <factor>-13.8</factor>
+        <center>
+            <x-m>-0.109838</x-m>
+            <y-m> 1.389</y-m>
+            <z-m>-1.62206</z-m>
+        </center>  
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+    </animation> 
+
+<!--  Luces *lights* -->
+
+<!-- Luces de formacion -->
+ <animation>   
+  <type>select</type>
+  <object-name>LucesFormacion</object-name>
+  <condition>
+   <property>controls/lighting/formation_lighting</property>
+  </condition>
+ </animation>
+
+<animation>   
+	<type>material</type>
+	<object-name>LucesFormacion</object-name>
+	<emission>
+		<red>0</red>
+		<green>1</green>
+		<blue>0</blue>
+	</emission>
+</animation>
+
+<!-- Baliza  *Beacon* -->   
+	
+  <model> 
+    <path>Aircraft\C-101\Models\Lights\Beacon.xml</path>
+    <offsets>
+      <x-m> 5.40556</x-m>
+      <y-m> 0.0    </y-m>
+      <z-m> 2.53831</z-m>
+    </offsets>
+  </model>
+  
+ <!-- Luces de navegacion *Lights of navigation* -->
+
+  <model>   <!-- Navegacion Izquierda --> 
+    <path>Aircraft\C-101\Models\Lights\NavL.xml</path>
+    <offsets>
+      <x-m>-0.337673</x-m>
+      <y-m>-5.23021</y-m>
+      <z-m>-0.0692425</z-m>
+    </offsets>
+  </model>
+  
+  <model>   <!-- Navegacion Derecha --> 
+    <path>Aircraft\C-101\Models\Lights\NavR.xml</path>
+    <offsets>
+      <x-m>-0.337673</x-m>
+      <y-m> 5.23021</y-m>
+      <z-m>-0.0692425</z-m>
+    </offsets>
+  </model>  
+  
+  <model>   <!-- Navegacion Trasera -->  
+    <path>Aircraft\C-101\Models\Lights\NavBack.xml</path>
+    <offsets>
+      <x-m> 5.78922</x-m>
+      <y-m> 0.0    </y-m>
+      <z-m> 2.26324</z-m>
+    </offsets>
+  </model> 
+
+<!-- Luces de aterrizaje *Landing Light* -->
+
+ <!-- Izquierda -->   
+ <animation>
+		<type>select</type>
+		<object-name>Landing_IZQ</object-name>
+	<condition>
+    <property>controls/lighting/landing-lights</property>
+  </condition>
+ </animation>
+	
+ <animation>
+		<type>noshadow</type>
+		<object-name>Landing_IZQ</object-name>
+ </animation>
+  
+ <animation>  
+  <type>rotate</type> 
+    <object-name>LuzLanding_IZQ_02</object-name>
+    <object-name>LuzLanding_IZQ_03</object-name>
+    <object-name>Landing_IZQ</object-name>
+   <property>controls/door[2]</property>
+   <factor>85</factor> 
+   <center>
+   <x-m>-0.091038</x-m>
+   <y-m>-1.796</y-m>
+   <z-m>-0.490476</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ 
+ <!-- Derecha --> 
+ <animation>
+		<type>select</type> 
+		<object-name>Landing_DER</object-name>
+	<condition>
+    <property>controls/lighting/landing-lights</property>
+  </condition>
+ </animation>
+	
+ <animation>
+		<type>noshadow</type>
+		<object-name>Landing_DER</object-name>
+ </animation>
+ 
+ <animation>  
+  <type>rotate</type> 
+    <object-name>LuzLanding_DER_02</object-name>
+    <object-name>LuzLanding_DER_03</object-name>
+    <object-name>Landing_DER</object-name>
+   <property>controls/door[2]</property>
+   <factor>85</factor> 
+   <center>
+   <x-m>-0.091038</x-m>
+   <y-m> 1.796</y-m>
+   <z-m>-0.490476</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+<!-- Luces de rodadura  * Taxi Lights* -->
+    
+ <!-- <model>  --> <!-- Derecha -->  <!--
+    <path>Aircraft\C-101\Models\Lights\taxi.xml</path>
+    <offsets>
+      <x-m></x-m>
+      <y-m></y-m>
+      <z-m></z-m>
+    </offsets>
+  </model>  
+  -->
+  
+	<!-- TYRE SMOKE -->
+
+<!-- Delantera -->
+
+<model>
+	<path>Aircraft/Generic/Effects/tyre-smoke-nose.xml</path>
+	<name>tyre-smoke-n</name>
+	<offsets>
+		<x-m>-4.817  </x-m>
+		<y-m> 0.0    </y-m>
+		<z-m>-1.74857</z-m>
+	</offsets>
+</model>
+
+	<!-- Trasera izquierda -->
+
+<model>
+	<path>Aircraft/Generic/Effects/tyre-smoke-port.xml</path> 
+	<name>tyre-smoke-p</name>
+	<offsets>
+		<x-m>-0.11  </x-m>
+		<y-m>-1.389 </y-m>
+		<z-m>-1.8481</z-m>
+	</offsets>
+</model>
+
+	<!-- Trasera derecha -->
+
+<model>
+	<path>Aircraft/Generic/Effects/tyre-smoke-stbd.xml</path>
+	<name>tyre-smoke-s</name>
+	<offsets>
+		<x-m>-0.11  </x-m>
+		<y-m> 1.389 </y-m>
+		<z-m>-1.8481</z-m>
+	</offsets>
+</model>
+
+
+	<!-- SHADERS -->
+
+<effect>
+	<inherits-from>Aircraft/C-101/Models/Effects/reflect_glass</inherits-from>
+		<object-name>Cristal</object-name>
+		<object-name>Compuerta_01_Cristal</object-name>
+		<object-name>Compuerta_02_Cristal</object-name>
+		<object-name>LuzLanding_IZQ_03</object-name>
+		<object-name>LuzLanding_DER_03</object-name>
+</effect>
+
+<effect>
+	<inherits-from>Aircraft/C-101/Models/Effects/reflect_metal</inherits-from>
+		<object-name>Motor_02</object-name>
+		<object-name>Motor_03</object-name>
+		<object-name>SoporteLucesNAV</object-name>
+		<object-name>Pitot</object-name>
+		<object-name>LuzLanding_IZQ_02</object-name>
+		<object-name>LuzLanding_DER_02</object-name>
+		<object-name>Tren_IZQ_04</object-name>
+		<object-name>Tren_IZQ_06</object-name>
+		<object-name>Tren_DER_04</object-name>
+		<object-name>Tren_DER_06</object-name>
+</effect>
+
+	<!-- EFFECTS AND CONFIGURATIONS FOR REMBRANDT (in early development) -->
+
+<effect>
+	<inherits-from>Effects/model-transparent</inherits-from>
+		<object-name>Cristal</object-name>
+		<object-name>Compuerta_01_Cristal</object-name>
+		<object-name>Compuerta_02_Cristal</object-name>
+		<object-name>LuzLanding_IZQ_03</object-name>
+		<object-name>LuzLanding_DER_03</object-name>
+	<condition>
+		<property>sim/rendering/rembrandt/enabled</property>
+	</condition>
+</effect>
+
+</PropertyList>

@@ -1,0 +1,57 @@
+<!--
+    CASA C-101_Aviojet for FlightGear flight simulator
+    Copyright (C) 2013  Pavel Cueto, Fernando Espinosa
+
+This program is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation; either version 3 of the License, or 
+(at your option) any later version. 
+
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+GNU General Public License for more details. 
+
+You should have received a copy of the GNU General Public License 
+along with this program; if not, write to the Free Software 
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+
+<PropertyList>
+	<title>CASA C-101 BB Aviojet / ENAER T-36 Halcon</title>
+	<line></line>
+	<key>
+		<name>d</name>
+		<desc>Open/close pilot cokpit</desc>
+	</key>
+	<key>
+		<name>Shift + d</name>
+		<desc>Open/close copilot cokpit</desc>
+	</key>
+	<key>
+		<name>Ctrl + b</name>
+		<desc>Open/close speedbrake</desc>
+	</key>
+	<key>
+		<name>e</name>
+		<desc>DEFA 553 cannon trigger</desc>
+	</key>
+	<line>Work in progress</line>
+	<line></line>
+	<text>
+Takeoff:
+Flaps 10', full throttle, release brakes.
+Rotate near 115-120 KIAS.
+Fold gear inmediatly, retract flaps.
+
+Landing:
+Deploy speedbrake at 250 KIAS
+Throttle between idle and 75%
+Gear below 200 KIAS
+Flaps 30' at 150 KIAS
+Final approach near 120 KIAS
+	</text>
+	<line>____________________________________________</line>
+	<line>      www.vivefg.org</line>
+
+</PropertyList>

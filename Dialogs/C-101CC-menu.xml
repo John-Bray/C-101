@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    CASA C-101_Aviojet for FlightGear flight simulator
+    Copyright (C) 2013  Pavel Cueto, Fernando Espinosa
+
+This program is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation; either version 3 of the License, or 
+(at your option) any later version. 
+
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+GNU General Public License for more details. 
+
+You should have received a copy of the GNU General Public License 
+along with this program; if not, write to the Free Software 
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+
+<PropertyList>
+
+<default>
+	<menu n="10">
+		<label>C-101CC</label>
+		<enabled type="bool">true</enabled>
+		<item n="1">
+			<label>Aircraft lights</label>
+			<binding>            
+				<command>dialog-show</command>
+				<dialog-name>lights-dialog</dialog-name>
+			</binding>
+		</item>
+		<item n="2">
+			<label>Select Livery</label>
+			<binding>
+				<command>nasal</command>
+				<script>aircraft.livery.dialog.toggle()</script>
+			</binding>
+		</item>
+		<item n="3">
+			<label>Pushback</label>
+			<name>pushback</name>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>pushback</dialog-name>
+			</binding>
+		</item>
+	</menu>
+</default>
+
+</PropertyList>

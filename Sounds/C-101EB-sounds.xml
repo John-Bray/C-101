@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+
+<!--
+    CASA C-101_Aviojet for FlightGear flight simulator
+    Copyright (C) 2013  Pavel Cueto, Fernando Espinosa
+
+This program is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation; either version 3 of the License, or 
+(at your option) any later version. 
+
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+GNU General Public License for more details. 
+
+You should have received a copy of the GNU General Public License 
+along with this program; if not, write to the Free Software 
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+
+<PropertyList>
+
+<fx>
+    <engine>
+		<name>engine-external-view</name>
+		<path>Aircraft/C-101/Sounds/jet.wav</path>
+		<mode>looped</mode>
+		<property>engines/engine/running</property>
+		<volume>
+			<property>engines/engine/thrust_lb</property>
+			<type>lin</type>
+			<factor>0.000212</factor>
+			<!-- Scales to 0-1 for 4700lb engine (Garrett TFE731-5) -->
+		</volume>
+		<condition>
+			<not>
+				<property>/sim/current-view/internal</property>
+			</not>
+		</condition>
+	</engine>
+
+    <engine>
+		<name>engine-internal-view</name>
+		<path>Aircraft/C-101/Sounds/jet.wav</path>
+		<mode>looped</mode>
+		<property>engines/engine/running</property>
+		<volume>
+			<property>engines/engine/thrust_lb</property>
+			<type>lin</type>
+			<factor>0.000156</factor>
+			<!-- Scales to 0-0.5 for 4700lb engine (Garrett TFE731-5) -->
+		</volume>
+		<condition>
+			<property>/sim/current-view/internal</property>
+		</condition>
+	</engine>
+
+	<engine>
+		<name>buzz-internal</name>
+		<path>Aircraft/C-101/Sounds/maxpower.wav</path>
+		<mode>looped</mode>
+		<property>engines/engine/running</property>
+		<pitch>
+			<property>engines/engine/n1</property>
+			<type>lin</type>
+			<factor>0.00015</factor>
+		</pitch>
+		<volume>
+			<property>engines/engine/n1</property>
+			<type>lin</type>
+			<factor>0.04</factor>
+			<offset>-3.6</offset>
+		</volume>
+		<position>
+			<x> 3.775</x>
+			<y> 0.000</y>
+			<z>-0.237</z>
+		</position>
+		<condition>
+			<property>/sim/current-view/internal</property>
+		</condition>
+	</engine>
+
+	<engine>
+		<name>whine-external</name>
+		<path>Aircraft/C-101/Sounds/whine.wav</path>
+		<mode>looped</mode>
+		<property>engines/engine/running</property>
+		<pitch>
+			<property>engines/engine/n1</property>
+			<type>lin</type>
+			<factor>.008</factor>
+		</pitch>
+		<volume>
+			<property>engines/engine/n1</property>
+			<type>log</type>
+			<factor>0.1</factor>
+			<!-- 10-100% rpm == 0.1 - 1 factor -->
+		</volume>
+		<position>
+			<x> 3.775</x>
+			<y> 0.000</y>
+			<z>-0.237</z>
+		</position>
+		<condition>
+			<not>
+				<property>/sim/current-view/internal</property>
+			</not>
+		</condition>
+	</engine>
+
+	<engine>
+		<name>whine-internal</name>
+		<path>Aircraft/C-101/Sounds/whine.wav</path>
+		<mode>looped</mode>
+		<property>engines/engine/running</property>
+		<pitch>
+			<property>engines/engine/n1</property>
+			<type>lin</type>
+			<factor>.008</factor>
+		</pitch>
+		<volume>
+			<property>engines/engine/n1</property>
+			<type>log</type>
+			<factor>0.04</factor>
+			<!-- 10-100% rpm == 0.1 - 1 factor -->
+		</volume>
+		<position>
+			<x> 3.775</x>
+			<y> 0.000</y>
+			<z>-0.237</z>
+		</position>
+		<condition>
+			<property>/sim/current-view/internal</property>
+		</condition>
+	</engine>
+
+    <gear>
+        <name>gear</name>
+        <path>Aircraft/C-101/Sounds/gear.wav</path>
+        <property>gear/gear[0]/position-norm</property>
+        <mode>in-transit</mode>
+        <pitch>
+            <internal>dt_play</internal>
+            <offset>0.8</offset>
+            <factor>-0.001</factor>
+        </pitch>
+        <position>
+            <x>7</x>
+            <y>0</y>
+            <z>-1</z>
+        </position>
+        <reference-dist>5.0</reference-dist>
+        <max-dist>10.0</max-dist>
+    </gear>
+
+    <flap>
+        <name>flaps</name>
+        <path>Aircraft/C-101/Sounds/Flaps.wav</path>
+        <property>/surface-positions/flap-pos-norm</property>
+        <mode>in-transit</mode>
+        <volume>
+            <factor>0.1</factor>
+        </volume>
+        <position>
+            <x> 0.66</x>
+            <y> 0</y>
+            <z>-0.35</z>
+        </position>
+        <reference-dist>5.0</reference-dist>
+        <max-dist>10.0</max-dist>
+    </flap>
+
+	<squeal>
+		<name>squeal</name>
+		<path>Aircraft/C-101/Sounds/squeal.wav</path>
+		<condition>
+			<or>
+				<property>gear/gear[0]/wow</property>
+				<property>gear/gear[1]/wow</property>
+				<property>gear/gear[2]/wow</property>
+			</or>
+		</condition>
+		<volume>
+			<factor>0.4</factor>
+		</volume>
+		<pitch>
+			<property>velocities/airspeed-kt</property>
+			<factor>0.0025</factor>
+			<offset>1.2</offset>
+		</pitch>
+		<position>
+			<x>5</x>
+			<y>0</y>
+			<z>-2</z>
+		</position>
+		<reference-dist>20.0</reference-dist>
+		<max-dist>50.0</max-dist>
+	</squeal>
+
+	<rumble>
+		<name>rumble</name>
+		<path>Aircraft/C-101/Sounds/roll.wav</path>
+		<condition>
+			<or>
+				<property>/gear/gear[0]/wow</property>
+				<property>/gear/gear[1]/wow</property>
+				<property>/gear/gear[2]/wow</property>
+			</or>
+		</condition>
+		<mode>looped</mode>
+		<volume>
+			<property>velocities/groundspeed-kt</property>
+			<factor>0.02</factor>
+			<min>0</min>
+			<max>0.8</max>
+		</volume>
+		<position>
+			<x>-0.11</x>
+			<y>0</y>
+			<z>-2</z>
+		</position>
+		<reference-dist>10.0</reference-dist>
+		<max-dist>20.0</max-dist>
+	</rumble>
+
+    <wind>
+        <name>wind</name>
+        <path>Aircraft/C-101/Sounds/wind.wav</path>
+        <property>velocities/airspeed-kt</property>
+        <mode>looped</mode>
+        <volume>
+            <property>velocities/airspeed-kt</property>
+            <factor>0.002</factor>
+            <min>0.0</min>
+            <max>0.15</max>
+        </volume>
+        <pitch>
+            <property>velocities/airspeed-kt</property>
+            <factor>0.01</factor>
+            <offset>1.25</offset>
+        </pitch>
+        <position>
+            <x>2</x>
+            <y>0</y>
+            <z>0</z>
+        </position>
+		<condition>
+			<not>
+				<property>/sim/current-view/internal</property>
+			</not>
+		</condition>
+        <reference-dist>1</reference-dist>
+        <max-dist>2.0</max-dist>
+    </wind>
+
+</fx>
+
+</PropertyList>
