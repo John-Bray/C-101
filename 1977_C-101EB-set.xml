@@ -49,6 +49,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 	<C-101>
 		<file>Aircraft/C-101/Nasal/Liveries-C-101EB.nas</file>
 	</C-101>
+	<canvas_test>
+		<file>Aircraft/C-101/Models/Canvas_NAV1.nas</file>
+		<file>Aircraft/C-101/Models/Canvas_COM1.nas</file>
+		<file>Aircraft/C-101/Models/Canvas_N1.nas</file>
+		<file>Aircraft/C-101/Models/Canvas_N2.nas</file>
+		<file>Aircraft/C-101/Models/Canvas_ITT.nas</file>
+	</canvas_test>
 </nasal>
 
 <input>

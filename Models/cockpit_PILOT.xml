@@ -388,16 +388,15 @@
 	<entry><ind>-2.5</ind><dep>-0.01</dep></entry>
   </interpolation>
  </animation> 
-
-  <animation><type>translate</type>                  <object-name>HSI_LOC</object-name>
+  
+  <animation>
+    <type>textranslate</type><object-name>HSI_LOC</object-name>
     <property>/instrumentation/nav[0]/heading-needle-deflection</property>
-    <axis><y>1</y></axis>
-    <interpolation>
-	  <entry><ind>10</ind><dep> 0.01</dep></entry>
-	  <entry><ind>0.0</ind><dep>0</dep></entry>
-	  <entry><ind>-10</ind><dep>-0.01</dep></entry>
-    </interpolation>
-  </animation>
+    <step>0.1</step>
+    <factor>0.045</factor>
+    <bias>0.0001</bias>
+    <axis><x>-1</x></axis>
+  </animation>  
 
   <animation><type>rotate</type>
     <object-name>diskHSI</object-name>
@@ -584,7 +583,7 @@
 
 
 
-<!-- ==================TESTING TEXT ============== http://wiki.flightgear.org/OSG_Text -->
+<!-- ==================TESTING TEXT ============== http://wiki.flightgear.org/OSG_Text 
     <text>                                      
 <name>testingTextA</name>
   <font>lcd.txf</font><character-size type="double">0.011</character-size>
@@ -616,7 +615,7 @@
   <format type="string">%3.1f</format>
   <truncate type="bool">false</truncate>
   <alignment>right-top</alignment>
- </text>
+ </text>-->
   
 
 <!-- ========================================================================== Clock  -->

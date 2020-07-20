@@ -1,0 +1,20 @@
+One workaround I found with an older user/system where the FG installation was upgraded to FG2101.3.5 is similar to what was encountered in this thread:
+
+https://forum.flightgear.org/viewtopic.php?f=21&t=37641
+
+Basically it was invisible to the launcher.  If you get something similar, maybe try these command lines . . .
+
+--fg-aircraft=path/to/the/folder/where/your/aircraft/is/located
+--aircraft=1977_C-101EB
+
+for example, this worked for me:
+--fg-aircraft=/Users/myname/Documents/FlightGear/Aircraft/
+--aircraft=1977_C-101EB
+
+Yet the clean user I created to do the development of this doesn't have this problem.  Maybe it's a MacOS thing?
+
+
+
+Another discovery:
+
+By putting the C-101 folder inside the main FG Aircraft folder, it shows in the launcher.  And on my system (MacOS 10.14.1 (Mojave) with FG 2018 3.5) even a symlink from the GitHub Desktop folder works.
