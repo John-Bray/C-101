@@ -9,7 +9,7 @@ var nav_display = {
       "view": [1024, 256],
       "mipmapping": 1
     });
-    # ... and place it on the object called canvas_NAV1_frequencyV1
+    # ... and place it on the object called canvas_NAV1_frequency
     m.canvas.addPlacement({"node": "canvas_NAV1_frequency"});
     m.canvas.setColorBackground(0.1,0,0, 1);
     m.navf  = props.globals.getNode("instrumentation/nav/frequencies/selected-mhz-fmt");

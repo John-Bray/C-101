@@ -9,7 +9,7 @@ var com_display = {
       "view": [1024, 256],
       "mipmapping": 1
     });
-    # ... and place it on the object called canvas_NAV1_frequencyV1
+    # ... and place it on the object called canvas_COM1_frequency
     m.canvas.addPlacement({"node": "canvas_COM1_frequency"});
     m.canvas.setColorBackground(0.1,0,0, 1);
     m.comf  = props.globals.getNode("instrumentation/comm/frequencies/selected-mhz-fmt");
