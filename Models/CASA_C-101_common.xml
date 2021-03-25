@@ -150,6 +150,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 		<object-name>Spoiler_02_IZQ</object-name>
 		<object-name>Timon_01</object-name>
 		<object-name>Timon_02</object-name>
+		<object-name>Nariz</object-name>
 			<property-base>sim/model/livery</property-base>
 			<texture-prop>texture</texture-prop>
 			<texture>Textures/Default.png</texture>
@@ -192,9 +193,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
         </axis>
     </animation>
 
-	<!-- Animacion de los alerones --> 
+  <!-- ===================================================== Animacion de los alerones --> 
 
-<animation>
+  <animation>
 	<type>rotate</type>
 	<object-name>Aleron_IZQ</object-name>
 	<property>surface-positions/left-aileron-pos-norm</property>
@@ -207,9 +208,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 		<y2-m>-3.10218 </y2-m>
 		<z2-m>-0.252999</z2-m>
 	</axis>
-</animation>
+  </animation>
 
-<animation>
+  <animation>
 	<type>rotate</type>
 	<object-name>Aleron_DER</object-name>
 	<property>surface-positions/right-aileron-pos-norm</property>
@@ -222,9 +223,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 		<y2-m> 3.10218</y2-m>
 		<z2-m>-0.252999</z2-m>
 	</axis>
-</animation>
+  </animation>
 
-	<!-- Animacion de los elevadores --> 
+  <!-- =================================================== Animacion de los elevadores --> 
 
 	<!-- Elevador izquierdo -->
 
@@ -332,7 +333,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
  </animation> 
  
  
- <!-- Animacion del timon de direccion --> 
+ <!-- =============================================== Animacion del timon de direccion --> 
  <!-- Timon de direccion -->
   <animation>
   <type>rotate</type>
@@ -367,7 +368,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
  </animation>
  
  
- <!-- Animacion de los Flaps --> 
+ <!-- ========================================================= Animacion de los Flaps --> 
  <animation>
     <type>rotate</type>
     <object-name>Flap_IZQ</object-name>
@@ -399,7 +400,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
    </animation>
  
  
- <!-- Animacion de las compuertas --> 
+ <!-- ==================================================== Animacion de las compuertas --> 
  <!-- Compuerta piloto -->
  <animation>
   <type>rotate</type>
@@ -434,11 +435,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
        <y2-m> 0.349277</y2-m>
        <z2-m> 0.404097</z2-m>
    </axis>
-</animation>
+  </animation>
 
-	<!-- Animacion de los aerofrenos -->
+  <!-- =================================================== Animacion de los aerofrenos -->
 
-<animation>
+  <animation>
 	<type>rotate</type>
 	<object-name>Spoiler_01</object-name>
 	<object-name>Spoiler_02_DER</object-name>
@@ -453,9 +454,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 		<y2-m> 0.465625</y2-m>
 		<z2-m>-0.741052</z2-m>
 	</axis>
-</animation>
+  </animation>
 
-<animation>
+  <animation>
 	<type>rotate</type>
 	<object-name>Spoiler_02_DER</object-name>
 	<object-name>Spoiler_02_IZQ</object-name>
@@ -471,63 +472,55 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 	</axis>
 </animation>
 
-<!-- Tren de aterrizaje -->
+<!-- ================================================ Tren de aterrizaje / Landing Gear-->
+  <animation><type>select</type>                  <!-- Gear disappears when raised -->
+	<object-name>gearForward</object-name> 
+	<condition><property>gear/gear[0]/position-norm</property></condition>
+  </animation> 
+  
+  <animation><!---                                             retract gearForward -->
+	<type>rotate</type>
+	<object-name>gearForward</object-name>
+	<property>gear/gear[0]/position-norm</property>
+	<interpolation>
+	  <entry><ind>0.0</ind><dep>100</dep></entry>      <!-- <dep>113</dep> -->
+	  <entry><ind>0.8</ind><dep>  0</dep></entry>   <!-- codigos intercalados -->
+	  <entry><ind>1.0</ind><dep>  0</dep></entry>
+	</interpolation>
+	<axis><object-name>deployRatioFront</object-name></axis>
+</animation>
 
-	<!-- Direccion -->
-
-<animation>
-	<type>rotate</type>  
-	<object-name>Rueda_DEL_01</object-name> 
-	<object-name>Rueda_DEL_02</object-name>
-	<object-name>Tren_DEL_01</object-name>
-	<object-name>Tren_DEL_02</object-name>
-	<object-name>Tren_DEL_03</object-name>
-	<object-name>Tren_DEL_04</object-name>
+  <animation><type>rotate</type> <!-- Direccion /             Steering gearForward -->
+	<condition><!-- only when gear is down -->
+	  <!--and>
+		<property>gear/gear/steering-norm</property>
+		<not><less-than-->
+		      <property>gear/gear/position-norm</property><value>1</value>
+		<!--/less-than></not>
+	  </and-->
+	</condition> 
+	<object-name>gearForward</object-name>
 	<property>gear/gear/steering-norm</property>
-		<factor>45</factor>		
-		<axis>
-			<x1-m>-4.88279</x1-m>
-			<y1-m> 0.00   </y1-m>
-			<z1-m>-0.62453</z1-m>
-			<x2-m>-4.88279</x2-m>
-			<y2-m> 0.00   </y2-m>
-			<z2-m>-1.20749</z2-m>			
-		</axis>
-</animation> 
+		<factor>45</factor>	
+		<axis><object-name>rotationSteerFront</object-name></axis>
+  </animation> 
   
-  
-<!-- Amortiguacion Delantera -->  
- <animation>
-   <type>rotate</type>
-   <object-name>Tren_DEL_03</object-name>
-   <object-name>Rueda_DEL_01</object-name>
-   <object-name>Rueda_DEL_02</object-name>
-   <property>gear/gear[0]/compression-norm</property>
-   <interpolation>
-			<entry>
-				<ind>0</ind>
-				<dep>0</dep>
-			</entry>
-			<entry>
-				<ind>1</ind>
-				<dep>50</dep>
-			</entry>
-		</interpolation>
-   <center>
-   <x-m>-5.02653</x-m>
-   <y-m> 0.0    </y-m>
-   <z-m>-1.23799</z-m>
-  </center>
-  <axis>
-   <x>0.0</x>
-   <y>-1.0</y>
-   <z>0.0</z>
-  </axis>
+ <!-- Amortiguacion Delantera /                             Compression gearForward-->  
+ <animation><type>rotate</type>
+    <object-name>Tren_DEL_03</object-name> <!-- Caliper-->  
+    <object-name>Rueda_DEL_01</object-name>
+    <object-name>Rueda_DEL_02</object-name>
+    <object-name>rotateWheelAndTyre</object-name>
+    <property>gear/gear[0]/compression-norm</property>
+    <interpolation>
+      <entry><ind>0</ind><dep>0</dep></entry>
+      <entry><ind>1</ind><dep>50</dep></entry>
+    </interpolation>
+		<axis><object-name>rotateFrontCaliper</object-name></axis>
 </animation>
   
- <animation>
-   <type>translate</type> 
-   <object-name>Tren_DEL_04</object-name> 
+ <animation><type>translate</type> 
+   <object-name>Tren_DEL_04</object-name> <!-- Piston--> 
    <property>gear/gear[0]/compression-norm</property>
     <factor>-0.10</factor>
     <axis>
@@ -539,8 +532,27 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 			<z2-m>-1.27134</z2-m>			
 		</axis>
   </animation> 
+ 
+     <animation>   <!--                                 wheel rotation gearForward -->
+        <type>spin</type>
+        <object-name>Rueda_DEL_01</object-name>
+        <object-name>Rueda_DEL_02</object-name>
+     <property>gear/gear[0]/rollspeed-ms</property> 
+        <factor>13.8</factor> 
+		<axis><object-name>rotateWheelAndTyre</object-name></axis>
+    </animation>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   
-<!-- Amortiguacion Trasera Izquierda -->
+<!-- Amortiguacion Trasera Izquierda /Left / Port -->
  <animation>
    <type>rotate</type>
    <object-name>Tren_IZQ_02</object-name>
@@ -585,32 +597,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
   </animation> 
   
 <!-- Amortiguacion Trasera Derecha -->
- <animation>
-   <type>rotate</type>
-   <object-name>Tren_DER_02</object-name>
-   <object-name>Rueda_DER_01</object-name>
-   <object-name>Rueda_DER_02</object-name>
-   <property>gear/gear[2]/compression-norm</property>
-   <interpolation>
-			<entry>
-				<ind>1</ind>
-				<dep>50</dep>
-			</entry>
-			<entry>
-				<ind>0</ind>
-				<dep>0</dep>
-			</entry>
-		</interpolation>
-   <center>
-   <x-m>-0.40545</x-m>
-   <y-m> 1.6451 </y-m>
-   <z-m>-1.32002</z-m>
-  </center>
-  <axis>
-   <x>0.0</x>
-   <y>-1.0</y>
-   <z>0.0</z>
-  </axis>
+  <animation>
+	<type>rotate</type>
+	<object-name>Tren_DER_02</object-name>
+	<object-name>Rueda_DER_01</object-name>
+	<object-name>Rueda_DER_02</object-name>
+	<property>gear/gear[2]/compression-norm</property>
+	<interpolation>
+	  <entry><ind>1</ind><dep>50</dep></entry>
+	  <entry><ind>0</ind><dep>0</dep></entry>
+    </interpolation>
+	<center><x-m>-0.40545</x-m><y-m> 1.6451 </y-m><z-m>-1.32002</z-m></center>
+	<axis><x>0.0</x><y>-1.0</y><z>0.0</z></axis>
 </animation> 
 
  <animation>
@@ -632,40 +630,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 
 	<!-- Delantero -->  
 
-<animation>
-	<type>rotate</type>
-	<object-name>Rueda_DEL_01</object-name>
-	<object-name>Rueda_DEL_02</object-name>
-	<object-name>Tren_DEL_01</object-name>
-	<object-name>Tren_DEL_02</object-name>
-	<object-name>Tren_DEL_03</object-name>
-	<object-name>Tren_DEL_04</object-name>
-	<property>gear/gear[0]/position-norm</property>
-	<interpolation>
-		<entry>
-			<ind>0</ind>
-			<dep>100</dep>       <!-- <dep>113</dep> -->
-		</entry>
-		<entry>
-			<ind>0.8</ind>    <!-- codigos intercalados -->
-			<dep>0</dep>
-		</entry>		
-		<entry>
-			<ind>1.0</ind>
-			<dep>0</dep>
-		</entry>
-	</interpolation>
-	<center>
-		<x-m>-4.88279</x-m>
-		<y-m> 0.00   </y-m>
-		<z-m>-0.62453</z-m>
-	</center>
-	<axis>
-		<x>0.0</x>
-		<y>1.0</y>
-		<z>0.0</z>
-	</axis>
-</animation>
+
     
 <animation>
 	<type>rotate</type>
@@ -1060,23 +1025,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 </animation>
 
   <!-- Rotacion de las ruedas -->   
-    <animation>   <!-- Delantera -->
-        <type>spin</type>
-        <object-name>Rueda_DEL_01</object-name>
-        <object-name>Rueda_DEL_02</object-name>
-     <property>gear/gear[0]/rollspeed-ms</property> 
-        <factor>-13.8</factor> 
-        <center>
-            <x-m>-4.8171 </x-m>
-            <y-m> 0.00   </y-m>
-            <z-m>-1.60008</z-m>
-        </center>
-        <axis>
-            <x>0</x>
-            <y>1</y>
-            <z>0</z>
-        </axis>
-    </animation>
+
     
     <animation> <!-- trasera izquierda -->
         <type>spin</type>

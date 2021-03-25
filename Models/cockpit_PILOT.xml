@@ -571,10 +571,13 @@
     <axis><x> -1 </x><!--  roll --></axis>
   </animation>   
   <animation><type>rotate</type><object-name>needleOilPSI</object-name>
-    <property>/engines/engine/oil-pressure-psi</property><!--  HACK!!!!!!  -->
+    <property>/engines/engine/oil-pressure-psi</property><!--  HACK!!!!!!  
+    it varies from 30..62-->
      <interpolation>
       <entry><ind>  0 </ind><dep> -120 </dep></entry>
-      <entry><ind> 80 </ind><dep> 120 </dep></entry>
+      <entry><ind> 30 </ind><dep>  -15 </dep></entry>
+      <entry><ind> 62 </ind><dep>   20 </dep></entry>
+      <entry><ind> 80 </ind><dep>  120 </dep></entry>
     </interpolation>
     <center><y-m>0.209</y-m><!-- right --><z-m>0.042</z-m><!-- up --></center>
     <axis><x> -1 </x><!--  roll --></axis>
