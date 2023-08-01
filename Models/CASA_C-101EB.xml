@@ -39,9 +39,25 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
   <nasal><!-- Livery dialog -->
 	<load>
 		var livery_update = aircraft.livery_update.new("Aircraft/C-101/Models/Liveries_C-101EB");
+		var self = cmdarg();
+		
+		var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
+		var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
+		var float_2 = self.getNode("sim/multiplay/generic/float[2]", 1);
+
+		var door_0 = self.getNode("controls/door[0]",1);
+		var door_1 = self.getNode("controls/door[1]",1);
+		var door_2 = self.getNode("controls/door[2]",1);
+
+		door_0.alias(float_0);
+		door_1.alias(float_1);
+		door_2_alias(float_2);
 	</load>
 	<unload>
 		livery_update.stop();
+		door_0.unalias();
+		door_1.unalias();
+		door_2.unalias();
 	</unload>
   </nasal>
 
