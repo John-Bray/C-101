@@ -695,6 +695,9 @@
     <axis><y>-1</y></axis>
   </animation> 
   
-  
+   <effect><!-- SHADERS -->
+	<inherits-from>Aircraft/C-101/Models/Effects/reflect_glass</inherits-from>
+		<object-name>Instrument_glass</object-name>
+  </effect> 
 
 </PropertyList>
