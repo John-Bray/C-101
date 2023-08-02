@@ -39,6 +39,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 	<multiplay>
 		<generic>
 			<int n="11" alias="/controls/armament/smoke"/>
+			<float n="0" alias="/controls/door[0]"/>
+			<float n="1" alias="/controls/door[1]"/>
+			<float n="2" alias="/controls/door[2]"/>
 		</generic>
 	</multiplay>
 	<menubar include="Dialogs/C-101EB-menu.xml"/>
