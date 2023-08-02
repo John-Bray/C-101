@@ -36,28 +36,91 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 	<path>Aircraft/C-101/Models/Smoke_dispenser.xml</path>
   </model>
 
-  <nasal><!-- Livery dialog -->
+  <nasal>
 	<load>
+		<![CDATA[
+		# standard livery call
+
 		var livery_update = aircraft.livery_update.new("Aircraft/C-101/Models/Liveries_C-101EB");
-		var self = cmdarg();
+
+		# property mirring functions - originated in tomaskoms lighting code
+
+		var root = cmdarg();
+		var rootindex = root.getIndex();
+		var mpPath = "/ai/models/multiplayer["~ rootindex ~"]/";
 		
-		var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
-		var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
-		var float_2 = self.getNode("sim/multiplay/generic/float[2]", 1);
+		# I need to set listener on some MP transferred properties; this doesn't seem to work well sometimes, 
+		# so I mirror them to the original location on any change
+		# This also simplifies work as I can use almost the same code for MP as is the local Nasal. 
+		# Furthermore, I can use meaningful property names in the model XML files instead of referencing the MP properties. 
+		var mpVar = {
+        		new: func(propIn, propOut) {
+                		var m = { parents: [mpVar] };
+                		m.propIn = propIn;
+                		m.propOut = propOut;
+                		if(propIn==nil or propOut==nil) return m;
+                		m.value = getprop(propIn);
+                		setprop(propOut, m.value);
+                		return m;
+        		},
+        		check: func {
+                		if(me.propIn==nil or me.propOut==nil) return;
+                		var newValue = getprop(me.propIn);
+                		if(newValue != me.value) {
+                        		setprop(me.propOut, newValue);
+                        		me.value = newValue;
+                        		#print("value of "~me.propOut~" changed: "~newValue);
+                		}
+        		},
+		};
 
-		var door_0 = self.getNode("controls/door[0]",1);
-		var door_1 = self.getNode("controls/door[1]",1);
-		var door_2 = self.getNode("controls/door[2]",1);
+		#init any property copy object needed in this array (anything you need to transfer over MP, but you are using the original paths in your xmls)
+		#also used for properties you are using a listener on, or properties which you maybe want to manipulate during the <unload> 
+		#if you're just using the pack, change the values according to the MP bindings in the -set.xml file
+		#you don't need to delete the entries if the path is nil - it gets skipped automatically and the MP path is just ignored
+		#
+		# yes you do need to comment out entries is the path is nil - enrogue
+		var mirrorValues = [
+		# preserving original lights properties in case we use them
+		#mpVar.new(mpPath~"sim/multiplay/generic/int[7]", mpPath~"sim/crashed"),
+		#mpVar.new(mpPath~"sim/multiplay/generic/int[4]", navSwitch),
+		#mpVar.new(mpPath~"sim/multiplay/generic/int[1]", beaconSwitch),
+		#mpVar.new(mpPath~"sim/multiplay/generic/int[1]", strobeSwitch),
+		#mpVar.new(mpPath~"sim/multiplay/generic/int[2]", landingSwitch),
+		#mpVar.new(mpPath~"sim/multiplay/generic/int[3]", taxiSwitch),
+		#mpVar.new(mpPath~"sim/multiplay/generic/int[3]", probeSwitch),
+		#mpVar.new(mpPath~"sim/multiplay/generic/int[0]", whiteSwitch),
+		#mpVar.new(mpPath~"sim/multiplay/generic/int[8]", searchSwitch),
+		mpVar.new(mpPath~"sim/multiplay/generic/int[11]",mpPath~"controls/armament/smoke"),
+		mpVar.new(mpPath~"sim/multiplay/generic/float[0]",mpPath~"controls/door[0]"),
+		mpVar.new(mpPath~"sim/multiplay/generic/float[1]",mpPath~"controls/door[1]"),
+		mpVar.new(mpPath~"sim/multiplay/generic/float[2]",mpPath~"controls/door[2]"),
+		];
+		
+		#loop at the default MP transfer frequency (10Hz)
+		var mirrorTimer = maketimer(0.1, func {
+        		foreach(var mir; mirrorValues) {
+                		mir.check();
+        		}
+		});
+		mirrorTimer.start();
 
-		door_0.alias(float_0);
-		door_1.alias(float_1);
-		door_2_alias(float_2);
+		]]>
 	</load>
 	<unload>
+		<![CDATA[
+		#stop livery update
+
 		livery_update.stop();
-		door_0.unalias();
-		door_1.unalias();
-		door_2.unalias();
+
+		#prevent multiple timers and listeners from running and fighting on next connect
+		#cleanly destroy MP property mirroring
+
+		mirrorTimer.stop();
+		mirrorTimer = nil;
+		mirrorValues = nil;
+
+		]]>
 	</unload>
   </nasal>
 
